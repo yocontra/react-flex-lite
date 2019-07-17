@@ -18,7 +18,9 @@
     "css",
     "grid"
   ],
-  "author": "Contra <yo@contra.io> (http://contra.io)",
+  "contributors": [
+    "Contra <yo@contra.io> (http://contra.io)"
+  ],
   "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.6",
