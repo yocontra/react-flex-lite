@@ -1,13 +1,13 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { getPropsWithLayout } from './Layout'
+import { getPropsWithLayout }, Layout from './Layout'
 
 const propTypes = {
   as: PropTypes.string,
   children: PropTypes.node
 }
 
-export class Box extends PureComponent {
+class Box extends PureComponent {
   static propTypes = propTypes
 
   render = () => {
@@ -16,7 +16,7 @@ export class Box extends PureComponent {
   }
 }
 
-export class Flex extends PureComponent {
+class Flex extends PureComponent {
   static displayName = 'Flex' // override
   static propTypes = propTypes
 
@@ -25,3 +25,5 @@ export class Flex extends PureComponent {
     return React.createElement(as || 'div', getPropsWithLayout(rest, { flex: true }), children)
   }
 }
+
+export { Layout, Box, Flex }
