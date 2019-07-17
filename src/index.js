@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { getPropsWithLayout }, Layout from './Layout'
+import { getPropsWithLayout, default as Layout } from './Layout'
 
 const propTypes = {
   as: PropTypes.string,
