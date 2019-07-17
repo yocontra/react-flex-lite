@@ -1,5 +1,6 @@
 import React from 'react'
-import { pick, omit } from 'lodash'
+import pick from 'lodash.pick'
+import omit from 'lodash.omit'
 import cn from 'classnames'
 import hoist from 'hoist-non-react-statics'
 import PropTypes from 'prop-types'
