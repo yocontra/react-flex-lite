@@ -24,17 +24,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 (function () {
-  var enterModule = (typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal : require('react-hot-loader')).enterModule;
+  var enterModule = require('react-hot-loader').enterModule;
+
   enterModule && enterModule(module);
 })();
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
-
-var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
-  return a;
-};
 
 var propTypes = {
   as: _propTypes.default.string,
@@ -127,7 +124,9 @@ Flex.propTypes = propTypes;
 ;
 
 (function () {
-  var reactHotLoader = (typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal : require('react-hot-loader')).default;
+  var reactHotLoader = require('react-hot-loader').default;
+
+  var leaveModule = require('react-hot-loader').leaveModule;
 
   if (!reactHotLoader) {
     return;
@@ -136,11 +135,7 @@ Flex.propTypes = propTypes;
   reactHotLoader.register(propTypes, "propTypes", "/Users/contra/Projects/react-flex-lite/src/index.js");
   reactHotLoader.register(Box, "Box", "/Users/contra/Projects/react-flex-lite/src/index.js");
   reactHotLoader.register(Flex, "Flex", "/Users/contra/Projects/react-flex-lite/src/index.js");
+  leaveModule(module);
 })();
 
 ;
-
-(function () {
-  var leaveModule = (typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal : require('react-hot-loader')).leaveModule;
-  leaveModule && leaveModule(module);
-})();
