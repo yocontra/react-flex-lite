@@ -17,6 +17,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _Layout = _interopRequireWildcard(require("./Layout"));
 
+exports.getPropsWithLayout = _Layout.getPropsWithLayout;
 exports.Layout = _Layout.default;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

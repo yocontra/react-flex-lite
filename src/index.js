@@ -26,4 +26,4 @@ class Flex extends PureComponent {
   }
 }
 
-export { Layout, Box, Flex }
+export { getPropsWithLayout, Layout, Box, Flex }

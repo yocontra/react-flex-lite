@@ -30,7 +30,7 @@
     "lodash.omit": "^4.5.0",
     "lodash.pick": "^4.4.0",
     "moize": "^5.4.4",
-    "nano-css": "^3.5.0"
+    "nano-css": "^5.0.0"
   },
   "peerDependencies": {
     "react": "^16.8.0"
