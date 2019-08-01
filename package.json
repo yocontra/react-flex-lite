@@ -1,6 +1,6 @@
 {
   "name": "react-flex-lite",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Flexbox components for React, as minimal as possible",
   "main": "dist/index.js",
   "scripts": {
@@ -21,6 +21,10 @@
   "contributors": [
     "Contra <yo@contra.io> (http://contra.io)"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/staeco/react-flex-lite.git"
+  },
   "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.6",
