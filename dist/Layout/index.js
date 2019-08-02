@@ -1,23 +1,27 @@
 "use strict";
 
+require("core-js/modules/es.symbol");
+
+require("core-js/modules/es.array.concat");
+
+require("core-js/modules/es.array.filter");
+
+require("core-js/modules/es.array.for-each");
+
+require("core-js/modules/es.function.name");
+
+require("core-js/modules/es.object.assign");
+
+require("core-js/modules/es.object.get-own-property-descriptor");
+
+require("core-js/modules/es.object.get-own-property-descriptors");
+
+require("core-js/modules/es.object.keys");
+
+require("core-js/modules/web.dom-collections.for-each");
+
 exports.__esModule = true;
 exports.default = exports.getPropsWithLayout = void 0;
-
-require("core-js/modules/es6.object.assign");
-
-require("core-js/modules/es7.object.get-own-property-descriptors");
-
-require("core-js/modules/es6.symbol");
-
-require("core-js/modules/es6.function.name");
-
-require("core-js/modules/web.dom.iterable");
-
-require("core-js/modules/es6.array.iterator");
-
-require("core-js/modules/es6.object.to-string");
-
-require("core-js/modules/es6.object.keys");
 
 var _react = _interopRequireDefault(require("react"));
 

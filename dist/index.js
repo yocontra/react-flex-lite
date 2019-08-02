@@ -1,15 +1,15 @@
 "use strict";
 
+require("core-js/modules/es.array.concat");
+
+require("core-js/modules/es.array.index-of");
+
+require("core-js/modules/es.object.get-own-property-descriptor");
+
+require("core-js/modules/es.object.keys");
+
 exports.__esModule = true;
 exports.Flex = exports.Box = void 0;
-
-require("core-js/modules/web.dom.iterable");
-
-require("core-js/modules/es6.array.iterator");
-
-require("core-js/modules/es6.object.to-string");
-
-require("core-js/modules/es6.object.keys");
 
 var _react = _interopRequireWildcard(require("react"));
 

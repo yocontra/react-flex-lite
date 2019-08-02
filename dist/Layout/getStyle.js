@@ -1,27 +1,39 @@
 "use strict";
 
+require("core-js/modules/es.symbol");
+
+require("core-js/modules/es.array.filter");
+
+require("core-js/modules/es.array.for-each");
+
+require("core-js/modules/es.array.join");
+
+require("core-js/modules/es.array.map");
+
+require("core-js/modules/es.array.reduce");
+
+require("core-js/modules/es.object.entries");
+
+require("core-js/modules/es.object.get-own-property-descriptor");
+
+require("core-js/modules/es.object.get-own-property-descriptors");
+
+require("core-js/modules/es.object.keys");
+
+require("core-js/modules/es.regexp.constructor");
+
+require("core-js/modules/es.regexp.exec");
+
+require("core-js/modules/es.regexp.to-string");
+
+require("core-js/modules/es.string.match");
+
+require("core-js/modules/es.string.split");
+
+require("core-js/modules/web.dom-collections.for-each");
+
 exports.__esModule = true;
 exports.default = void 0;
-
-require("core-js/modules/es6.regexp.match");
-
-require("core-js/modules/es7.object.entries");
-
-require("core-js/modules/es7.object.get-own-property-descriptors");
-
-require("core-js/modules/es6.symbol");
-
-require("core-js/modules/es6.regexp.split");
-
-require("core-js/modules/web.dom.iterable");
-
-require("core-js/modules/es6.array.iterator");
-
-require("core-js/modules/es6.object.to-string");
-
-require("core-js/modules/es6.object.keys");
-
-require("core-js/modules/es6.regexp.constructor");
 
 var _cssVendor = require("css-vendor");
 
