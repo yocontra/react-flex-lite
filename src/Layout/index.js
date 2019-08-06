@@ -75,7 +75,12 @@ const Layout = (InputComponent, defaultProps) => {
   hoist(out, InputComponent)
   const name = InputComponent.displayName || InputComponent.name
   out.displayName = name ? `Layout(${name})` : 'Layout'
-  out.propTypes = propTypes
+  out.propTypes = InputComponent.propTypes
+    ? {
+      ...InputComponent.propTypes,
+      ...propTypes
+    }
+    : propTypes
   return out
 }
 export default Layout

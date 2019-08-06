@@ -124,7 +124,7 @@ var Layout = function Layout(InputComponent, defaultProps) {
   (0, _hoistNonReactStatics.default)(out, InputComponent);
   var name = InputComponent.displayName || InputComponent.name;
   out.displayName = name ? "Layout(" + name + ")" : 'Layout';
-  out.propTypes = propTypes;
+  out.propTypes = InputComponent.propTypes ? _objectSpread({}, InputComponent.propTypes, {}, propTypes) : propTypes;
   return out;
 };
 

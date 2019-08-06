@@ -1,6 +1,6 @@
 {
   "name": "react-flex-lite",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Flexbox components for React, as minimal as possible",
   "main": "dist/index.js",
   "scripts": {
