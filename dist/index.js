@@ -4,7 +4,7 @@ require("core-js/modules/es.array.concat");
 
 require("core-js/modules/es.array.index-of");
 
-require("core-js/modules/es.object.get-own-property-descriptor");
+require("core-js/modules/es.object.create");
 
 require("core-js/modules/es.object.keys");
 
@@ -18,11 +18,13 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _Layout = _interopRequireWildcard(require("./Layout"));
 
 exports.getPropsWithLayout = _Layout.getPropsWithLayout;
-exports.Layout = _Layout.default;
+exports.Layout = _Layout["default"];
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 (function () {
   var enterModule = require('react-hot-loader').enterModule;
@@ -35,8 +37,8 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
 var propTypes = {
-  as: _propTypes.default.string,
-  children: _propTypes.default.node
+  as: _propTypes["default"].string,
+  children: _propTypes["default"].node
 };
 
 var Box =
@@ -59,7 +61,7 @@ function (_PureComponent) {
           children = _this$props.children,
           rest = _objectWithoutPropertiesLoose(_this$props, ["as", "children"]);
 
-      return _react.default.createElement(as || 'div', (0, _Layout.getPropsWithLayout)(rest), children);
+      return _react["default"].createElement(as || 'div', (0, _Layout.getPropsWithLayout)(rest), children);
     };
 
     return _this;
@@ -100,7 +102,7 @@ function (_PureComponent2) {
           children = _this2$props.children,
           rest = _objectWithoutPropertiesLoose(_this2$props, ["as", "children"]);
 
-      return _react.default.createElement(as || 'div', (0, _Layout.getPropsWithLayout)(rest, {
+      return _react["default"].createElement(as || 'div', (0, _Layout.getPropsWithLayout)(rest, {
         flex: true
       }), children);
     };

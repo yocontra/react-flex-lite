@@ -3,6 +3,14 @@ import memo from 'moize'
 import { rule } from './nano'
 import { space } from './config'
 
+const isOldIE = typeof window !== 'undefined' && !!window.ActiveXObject
+const fixIE = (css) => {
+  if (!isOldIE || css.display !== 'flex') return css // dont need to do anything
+  return {
+    'min-width': '0%',
+    ...css
+  }
+}
 const mrule = memo.deep(rule)
 const directions = {
   t: [ 'top' ],
@@ -144,5 +152,5 @@ export default memo.deep((props) => {
     })
     return prev
   }, {})
-  return Object.keys(css).length ? mrule(css) : undefined
+  return Object.keys(css).length ? mrule(fixIE(css)) : undefined
 })
