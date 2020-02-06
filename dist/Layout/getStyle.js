@@ -6,6 +6,8 @@ require("core-js/modules/es.array.filter");
 
 require("core-js/modules/es.array.for-each");
 
+require("core-js/modules/es.array.index-of");
+
 require("core-js/modules/es.array.join");
 
 require("core-js/modules/es.array.map");
@@ -63,7 +65,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var isOldIE = typeof window !== 'undefined' && !!window.ActiveXObject;
+// detect IE 6 - 11
+var isOldIE = typeof navigator !== 'undefined' && navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') !== -1;
 
 var fixIE = function fixIE(css) {
   if (!isOldIE || css.display !== 'flex') return css; // dont need to do anything
