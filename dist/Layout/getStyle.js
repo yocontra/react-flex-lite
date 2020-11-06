@@ -14,12 +14,6 @@ require("core-js/modules/es.array.map");
 
 require("core-js/modules/es.array.reduce");
 
-require("core-js/modules/es.array.reverse");
-
-require("core-js/modules/es.object.define-properties");
-
-require("core-js/modules/es.object.define-property");
-
 require("core-js/modules/es.object.entries");
 
 require("core-js/modules/es.object.get-own-property-descriptor");
@@ -41,7 +35,7 @@ require("core-js/modules/es.string.split");
 require("core-js/modules/web.dom-collections.for-each");
 
 exports.__esModule = true;
-exports["default"] = void 0;
+exports.default = void 0;
 
 var _cssVendor = require("css-vendor");
 
@@ -51,11 +45,10 @@ var _nano = require("./nano");
 
 var _config = require("./config");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (function () {
-  var enterModule = require('react-hot-loader').enterModule;
-
+  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
   enterModule && enterModule(module);
 })();
 
@@ -65,8 +58,12 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
+  return a;
+};
+
 // detect IE 6 - 11
-var isOldIE = typeof navigator !== 'undefined' && navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') !== -1;
+var isOldIE = typeof navigator !== 'undefined' && (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') !== -1);
 
 var fixIE = function fixIE(css) {
   if (!isOldIE || css.display !== 'flex') return css; // dont need to do anything
@@ -76,7 +73,7 @@ var fixIE = function fixIE(css) {
   }, css);
 };
 
-var mrule = _moize["default"].deep(_nano.rule);
+var mrule = _moize.default.deep(_nano.rule);
 
 var directions = {
   t: ['top'],
@@ -131,7 +128,7 @@ var rules = [// spacing shorthands
     var dirs = directions[dir] || [''];
     var val = scaleValue(n);
     return dirs.reduce(function (prev, d) {
-      return _objectSpread({}, prev, {}, decl(d ? prop + "-" + d : prop, px(val)));
+      return _objectSpread(_objectSpread({}, prev), decl(d ? prop + "-" + d : prop, px(val)));
     }, {});
   }
 }, // height and width shorthands
@@ -219,25 +216,25 @@ var rules = [// spacing shorthands
 }, {
   match: 'center',
   map: function map(n) {
-    return n ? _objectSpread({}, decl('justify-content', 'center'), {}, decl('align-items', 'center')) : {};
+    return n ? _objectSpread(_objectSpread({}, decl('justify-content', 'center')), decl('align-items', 'center')) : {};
   }
 }];
 
-var _default = _moize["default"].deep(function (props) {
+var _default = _moize.default.deep(function (props) {
   var css = Object.entries(props).reduce(function (prev, _ref2) {
     var k = _ref2[0],
         v = _ref2[1];
     rules.forEach(function (rule) {
       if (typeof rule.match === 'string') {
         if (k === rule.match) {
-          prev = _objectSpread({}, prev, {}, rule.map(v, k, props));
+          prev = _objectSpread(_objectSpread({}, prev), rule.map(v, k, props));
         }
 
         return;
       }
 
       if (rule.match.test(k)) {
-        prev = _objectSpread({}, prev, {}, rule.map(v, k, props));
+        prev = _objectSpread(_objectSpread({}, prev), rule.map(v, k, props));
       }
     });
     return prev;
@@ -246,13 +243,11 @@ var _default = _moize["default"].deep(function (props) {
 });
 
 var _default2 = _default;
-exports["default"] = _default2;
+exports.default = _default2;
 ;
 
 (function () {
-  var reactHotLoader = require('react-hot-loader').default;
-
-  var leaveModule = require('react-hot-loader').leaveModule;
+  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
 
   if (!reactHotLoader) {
     return;
@@ -270,8 +265,13 @@ exports["default"] = _default2;
   reactHotLoader.register(decl, "decl", "/Users/contra/Projects/react-flex-lite/src/Layout/getStyle.js");
   reactHotLoader.register(rules, "rules", "/Users/contra/Projects/react-flex-lite/src/Layout/getStyle.js");
   reactHotLoader.register(_default, "default", "/Users/contra/Projects/react-flex-lite/src/Layout/getStyle.js");
-  leaveModule(module);
 })();
 
 ;
+
+(function () {
+  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
+  leaveModule && leaveModule(module);
+})();
+
 module.exports = exports.default;

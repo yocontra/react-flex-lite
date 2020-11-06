@@ -4,8 +4,6 @@ require("core-js/modules/es.array.concat");
 
 require("core-js/modules/es.array.index-of");
 
-require("core-js/modules/es.object.create");
-
 require("core-js/modules/es.object.keys");
 
 exports.__esModule = true;
@@ -18,17 +16,16 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _Layout = _interopRequireWildcard(require("./Layout"));
 
 exports.getPropsWithLayout = _Layout.getPropsWithLayout;
-exports.Layout = _Layout["default"];
+exports.Layout = _Layout.default;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 (function () {
-  var enterModule = require('react-hot-loader').enterModule;
-
+  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
   enterModule && enterModule(module);
 })();
 
@@ -36,14 +33,16 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
-var propTypes = {
-  as: _propTypes["default"].string,
-  children: _propTypes["default"].node
+var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
+  return a;
 };
 
-var Box =
-/*#__PURE__*/
-function (_PureComponent) {
+var propTypes = {
+  as: _propTypes.default.string,
+  children: _propTypes.default.node
+};
+
+var Box = /*#__PURE__*/function (_PureComponent) {
   _inheritsLoose(Box, _PureComponent);
 
   function Box() {
@@ -61,7 +60,7 @@ function (_PureComponent) {
           children = _this$props.children,
           rest = _objectWithoutPropertiesLoose(_this$props, ["as", "children"]);
 
-      return _react["default"].createElement(as || 'div', (0, _Layout.getPropsWithLayout)(rest), children);
+      return /*#__PURE__*/_react.default.createElement(as || 'div', (0, _Layout.getPropsWithLayout)(rest), children);
     };
 
     return _this;
@@ -82,9 +81,7 @@ exports.Box = Box;
 Box.displayName = "Box";
 Box.propTypes = propTypes;
 
-var Flex =
-/*#__PURE__*/
-function (_PureComponent2) {
+var Flex = /*#__PURE__*/function (_PureComponent2) {
   _inheritsLoose(Flex, _PureComponent2);
 
   function Flex() {
@@ -102,7 +99,7 @@ function (_PureComponent2) {
           children = _this2$props.children,
           rest = _objectWithoutPropertiesLoose(_this2$props, ["as", "children"]);
 
-      return _react["default"].createElement(as || 'div', (0, _Layout.getPropsWithLayout)(rest, {
+      return /*#__PURE__*/_react.default.createElement(as || 'div', (0, _Layout.getPropsWithLayout)(rest, {
         flex: true
       }), children);
     };
@@ -127,9 +124,7 @@ Flex.propTypes = propTypes;
 ;
 
 (function () {
-  var reactHotLoader = require('react-hot-loader').default;
-
-  var leaveModule = require('react-hot-loader').leaveModule;
+  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
 
   if (!reactHotLoader) {
     return;
@@ -138,7 +133,11 @@ Flex.propTypes = propTypes;
   reactHotLoader.register(propTypes, "propTypes", "/Users/contra/Projects/react-flex-lite/src/index.js");
   reactHotLoader.register(Box, "Box", "/Users/contra/Projects/react-flex-lite/src/index.js");
   reactHotLoader.register(Flex, "Flex", "/Users/contra/Projects/react-flex-lite/src/index.js");
-  leaveModule(module);
 })();
 
 ;
+
+(function () {
+  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
+  leaveModule && leaveModule(module);
+})();

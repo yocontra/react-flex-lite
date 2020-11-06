@@ -8,10 +8,13 @@ var _nanoCss = require("nano-css");
 var _rule = require("nano-css/addon/rule");
 
 (function () {
-  var enterModule = require('react-hot-loader').enterModule;
-
+  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
   enterModule && enterModule(module);
 })();
+
+var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
+  return a;
+};
 
 var nano = (0, _nanoCss.create)();
 exports.nano = nano;
@@ -23,9 +26,7 @@ exports.put = put;
 ;
 
 (function () {
-  var reactHotLoader = require('react-hot-loader').default;
-
-  var leaveModule = require('react-hot-loader').leaveModule;
+  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
 
   if (!reactHotLoader) {
     return;
@@ -34,7 +35,11 @@ exports.put = put;
   reactHotLoader.register(nano, "nano", "/Users/contra/Projects/react-flex-lite/src/Layout/nano.js");
   reactHotLoader.register(put, "put", "/Users/contra/Projects/react-flex-lite/src/Layout/nano.js");
   reactHotLoader.register(rule, "rule", "/Users/contra/Projects/react-flex-lite/src/Layout/nano.js");
-  leaveModule(module);
 })();
 
 ;
+
+(function () {
+  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
+  leaveModule && leaveModule(module);
+})();

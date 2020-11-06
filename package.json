@@ -1,6 +1,6 @@
 {
   "name": "react-flex-lite",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Flexbox components for React, as minimal as possible",
   "main": "dist/index.js",
   "scripts": {
@@ -37,18 +37,18 @@
     "nano-css": "^5.0.0"
   },
   "peerDependencies": {
-    "react": "^16.8.0"
+    "react": "*"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/register": "^7.0.0",
-    "@stae/babel-client": "^0.1.8",
-    "@stae/linters": "^0.1.4",
+    "@stae/babel-react": "^1.0.0",
+    "@stae/linters": "^1.0.0",
     "cheerio-react": "^1.0.2",
     "eslint": "^6.0.1",
     "eslint-cli": "^1.1.1",
-    "mocha": "^7.0.0",
-    "react": "^16.8.6",
+    "mocha": "^8.0.0",
+    "react": "^17.0.0",
     "riteway": "^6.0.3",
     "should": "^13.2.3"
   }

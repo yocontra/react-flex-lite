@@ -4,7 +4,7 @@ import { rule } from './nano'
 import { space } from './config'
 
 // detect IE 6 - 11
-const isOldIE = typeof navigator !== 'undefined' && navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') !== -1
+const isOldIE = typeof navigator !== 'undefined' && (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') !== -1)
 const fixIE = (css) => {
   if (!isOldIE || css.display !== 'flex') return css // dont need to do anything
   return {
