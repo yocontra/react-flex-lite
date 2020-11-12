@@ -10,8 +10,6 @@ require("core-js/modules/es.array.for-each");
 
 require("core-js/modules/es.function.name");
 
-require("core-js/modules/es.object.assign");
-
 require("core-js/modules/es.object.get-own-property-descriptor");
 
 require("core-js/modules/es.object.get-own-property-descriptors");
@@ -22,6 +20,8 @@ require("core-js/modules/web.dom-collections.for-each");
 
 exports.__esModule = true;
 exports.default = exports.getPropsWithLayout = void 0;
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -42,22 +42,11 @@ var _this = void 0,
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(function () {
-  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
-  enterModule && enterModule(module);
-})();
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
-  return a;
-};
 
 var px = _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]);
 
@@ -114,16 +103,9 @@ exports.getPropsWithLayout = getPropsWithLayout;
 var Layout = function Layout(InputComponent, defaultProps) {
   var out = /*#__PURE__*/_react.default.forwardRef(function (props, ref) {
     var nprops = getPropsWithLayout(props, defaultProps);
-    return /*#__PURE__*/_react.default.createElement(InputComponent, _extends({
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(InputComponent, _objectSpread({
       ref: ref
-    }, nprops, {
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 73,
-        columnNumber: 12
-      }
-    }));
+    }, nprops));
   });
 
   (0, _hoistNonReactStatics.default)(out, InputComponent);
@@ -134,29 +116,4 @@ var Layout = function Layout(InputComponent, defaultProps) {
 };
 
 var _default = Layout;
-var _default2 = _default;
-exports.default = _default2;
-;
-
-(function () {
-  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(px, "px", "/Users/contra/Projects/react-flex-lite/src/Layout/index.js");
-  reactHotLoader.register(propTypes, "propTypes", "/Users/contra/Projects/react-flex-lite/src/Layout/index.js");
-  reactHotLoader.register(ourProps, "ourProps", "/Users/contra/Projects/react-flex-lite/src/Layout/index.js");
-  reactHotLoader.register(ourPropsWithExtra, "ourPropsWithExtra", "/Users/contra/Projects/react-flex-lite/src/Layout/index.js");
-  reactHotLoader.register(getPropsWithLayout, "getPropsWithLayout", "/Users/contra/Projects/react-flex-lite/src/Layout/index.js");
-  reactHotLoader.register(Layout, "Layout", "/Users/contra/Projects/react-flex-lite/src/Layout/index.js");
-  reactHotLoader.register(_default, "default", "/Users/contra/Projects/react-flex-lite/src/Layout/index.js");
-})();
-
-;
-
-(function () {
-  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
-  leaveModule && leaveModule(module);
-})();
+exports.default = _default;

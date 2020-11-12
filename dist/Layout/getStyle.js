@@ -47,20 +47,11 @@ var _config = require("./config");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(function () {
-  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
-  enterModule && enterModule(module);
-})();
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
-  return a;
-};
 
 // detect IE 6 - 11
 var isOldIE = typeof navigator !== 'undefined' && (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') !== -1);
@@ -242,36 +233,5 @@ var _default = _moize.default.deep(function (props) {
   return Object.keys(css).length ? mrule(fixIE(css)) : undefined;
 });
 
-var _default2 = _default;
-exports.default = _default2;
-;
-
-(function () {
-  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(isOldIE, "isOldIE", "/Users/contra/Projects/react-flex-lite/src/Layout/getStyle.js");
-  reactHotLoader.register(fixIE, "fixIE", "/Users/contra/Projects/react-flex-lite/src/Layout/getStyle.js");
-  reactHotLoader.register(mrule, "mrule", "/Users/contra/Projects/react-flex-lite/src/Layout/getStyle.js");
-  reactHotLoader.register(directions, "directions", "/Users/contra/Projects/react-flex-lite/src/Layout/getStyle.js");
-  reactHotLoader.register(spacingTypes, "spacingTypes", "/Users/contra/Projects/react-flex-lite/src/Layout/getStyle.js");
-  reactHotLoader.register(num, "num", "/Users/contra/Projects/react-flex-lite/src/Layout/getStyle.js");
-  reactHotLoader.register(px, "px", "/Users/contra/Projects/react-flex-lite/src/Layout/getStyle.js");
-  reactHotLoader.register(heightWidth, "heightWidth", "/Users/contra/Projects/react-flex-lite/src/Layout/getStyle.js");
-  reactHotLoader.register(scaleValue, "scaleValue", "/Users/contra/Projects/react-flex-lite/src/Layout/getStyle.js");
-  reactHotLoader.register(decl, "decl", "/Users/contra/Projects/react-flex-lite/src/Layout/getStyle.js");
-  reactHotLoader.register(rules, "rules", "/Users/contra/Projects/react-flex-lite/src/Layout/getStyle.js");
-  reactHotLoader.register(_default, "default", "/Users/contra/Projects/react-flex-lite/src/Layout/getStyle.js");
-})();
-
-;
-
-(function () {
-  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
-  leaveModule && leaveModule(module);
-})();
-
+exports.default = _default;
 module.exports = exports.default;

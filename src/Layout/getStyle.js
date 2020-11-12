@@ -68,7 +68,7 @@ const rules = [
   {
     match: 'flex',
     map: (n, k, others) => {
-      const flex = others.inline ? 'inline-flex': 'flex'
+      const flex = others.inline ? 'inline-flex' : 'flex'
       return decl('display', n ? flex : 'block')
     }
   },
