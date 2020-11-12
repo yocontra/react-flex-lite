@@ -1,4 +1,4 @@
-import React from 'react'
+import { forwardRef } from 'react'
 import pick from 'lodash.pick'
 import omit from 'lodash.omit'
 import cn from 'classnames'
@@ -68,7 +68,7 @@ export const getPropsWithLayout = (props, defaultProps) => {
 }
 
 const Layout = (InputComponent, defaultProps) => {
-  const out = React.forwardRef((props, ref) => {
+  const out = forwardRef((props, ref) => {
     const nprops = getPropsWithLayout(props, defaultProps)
     return <InputComponent ref={ref} {...nprops} />
   })

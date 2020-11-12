@@ -23,7 +23,7 @@ exports.default = exports.getPropsWithLayout = void 0;
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var _react = _interopRequireDefault(require("react"));
+var _react = require("react");
 
 var _lodash = _interopRequireDefault(require("lodash.pick"));
 
@@ -101,13 +101,12 @@ var getPropsWithLayout = function getPropsWithLayout(props, defaultProps) {
 exports.getPropsWithLayout = getPropsWithLayout;
 
 var Layout = function Layout(InputComponent, defaultProps) {
-  var out = /*#__PURE__*/_react.default.forwardRef(function (props, ref) {
+  var out = /*#__PURE__*/(0, _react.forwardRef)(function (props, ref) {
     var nprops = getPropsWithLayout(props, defaultProps);
     return /*#__PURE__*/(0, _jsxRuntime.jsx)(InputComponent, _objectSpread({
       ref: ref
     }, nprops));
   });
-
   (0, _hoistNonReactStatics.default)(out, InputComponent);
   var name = InputComponent.displayName || InputComponent.name;
   out.displayName = name ? "Layout(" + name + ")" : 'Layout';

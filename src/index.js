@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import { createElement, PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { getPropsWithLayout, default as Layout } from './Layout'
 
@@ -12,7 +12,7 @@ class Box extends PureComponent {
 
   render = () => {
     const { as, children, ...rest } = this.props
-    return React.createElement(as || 'div', getPropsWithLayout(rest), children)
+    return createElement(as || 'div', getPropsWithLayout(rest), children)
   }
 }
 
@@ -22,7 +22,7 @@ class Flex extends PureComponent {
 
   render = () => {
     const { as, children, ...rest } = this.props
-    return React.createElement(as || 'div', getPropsWithLayout(rest, { flex: true }), children)
+    return createElement(as || 'div', getPropsWithLayout(rest, { flex: true }), children)
   }
 }
 

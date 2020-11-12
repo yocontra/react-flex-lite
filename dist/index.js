@@ -9,7 +9,7 @@ require("core-js/modules/es.object.keys");
 exports.__esModule = true;
 exports.Flex = exports.Box = void 0;
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = require("react");
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
@@ -18,11 +18,11 @@ var _Layout = _interopRequireWildcard(require("./Layout"));
 exports.getPropsWithLayout = _Layout.getPropsWithLayout;
 exports.Layout = _Layout.default;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
@@ -51,7 +51,7 @@ var Box = /*#__PURE__*/function (_PureComponent) {
           children = _this$props.children,
           rest = _objectWithoutPropertiesLoose(_this$props, ["as", "children"]);
 
-      return /*#__PURE__*/_react.default.createElement(as || 'div', (0, _Layout.getPropsWithLayout)(rest), children);
+      return /*#__PURE__*/(0, _react.createElement)(as || 'div', (0, _Layout.getPropsWithLayout)(rest), children);
     };
 
     return _this;
@@ -82,7 +82,7 @@ var Flex = /*#__PURE__*/function (_PureComponent2) {
           children = _this2$props.children,
           rest = _objectWithoutPropertiesLoose(_this2$props, ["as", "children"]);
 
-      return /*#__PURE__*/_react.default.createElement(as || 'div', (0, _Layout.getPropsWithLayout)(rest, {
+      return /*#__PURE__*/(0, _react.createElement)(as || 'div', (0, _Layout.getPropsWithLayout)(rest, {
         flex: true
       }), children);
     };

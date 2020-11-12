@@ -1,4 +1,3 @@
-import React from 'react'
 import { Flex } from '../src'
 import should from 'should'
 import render from 'riteway/render-component'
