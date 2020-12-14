@@ -2,9 +2,7 @@
 
 require("core-js/modules/es.array.concat");
 
-require("core-js/modules/es.array.index-of");
-
-require("core-js/modules/es.object.keys");
+require("core-js/modules/es.object.assign");
 
 exports.__esModule = true;
 exports.Flex = exports.Box = void 0;
@@ -16,6 +14,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _Layout = _interopRequireWildcard(require("./Layout"));
 
 exports.getPropsWithLayout = _Layout.getPropsWithLayout;
+exports.propTypes = _Layout.propTypes;
 exports.Layout = _Layout.default;
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -28,10 +27,10 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
-var propTypes = {
+var componentPropTypes = Object.assign({
   as: _propTypes.default.string,
   children: _propTypes.default.node
-};
+}, _Layout.propTypes);
 
 var Box = /*#__PURE__*/function (_PureComponent) {
   _inheritsLoose(Box, _PureComponent);
@@ -61,8 +60,8 @@ var Box = /*#__PURE__*/function (_PureComponent) {
 }(_react.PureComponent);
 
 exports.Box = Box;
-Box.displayName = "Box";
-Box.propTypes = propTypes;
+Box.displayName = 'Box';
+Box.propTypes = componentPropTypes;
 
 var Flex = /*#__PURE__*/function (_PureComponent2) {
   _inheritsLoose(Flex, _PureComponent2);
@@ -95,4 +94,4 @@ var Flex = /*#__PURE__*/function (_PureComponent2) {
 
 exports.Flex = Flex;
 Flex.displayName = 'Flex';
-Flex.propTypes = propTypes;
+Flex.propTypes = componentPropTypes;

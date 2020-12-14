@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import getStyle from './getStyle'
 
 const px = PropTypes.oneOfType([ PropTypes.string, PropTypes.number ])
-const propTypes = {
+export const propTypes = {
   m: px, mb: px, mt: px, mr: px, ml: px, mx: px, my: px,
   p: px, pb: px, pt: px, pr: px, pl: px, px: px, py: px,
   h: px, w: px,
@@ -43,15 +43,7 @@ const propTypes = {
   auto: PropTypes.bool,
   center: PropTypes.bool
 }
-const ourProps = [
-  'm', 'mb', 'mt', 'mr', 'ml', 'mx', 'my',
-  'p', 'pb', 'pt', 'pr', 'pl', 'px', 'py',
-  'w', 'h', 'flex', 'wrap', 'auto', 'center',
-  'reverse', 'alignSelf', 'alignContent',
-  'basis', 'grow', 'shrink', 'center',
-  'column', 'align', 'justify', 'order',
-  'inline'
-]
+const ourProps = Object.keys(propTypes)
 
 const ourPropsWithExtra = [ ...ourProps, 'className' ]
 

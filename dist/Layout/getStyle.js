@@ -1,9 +1,5 @@
 "use strict";
 
-require("core-js/modules/es.symbol");
-
-require("core-js/modules/es.array.filter");
-
 require("core-js/modules/es.array.for-each");
 
 require("core-js/modules/es.array.index-of");
@@ -14,11 +10,9 @@ require("core-js/modules/es.array.map");
 
 require("core-js/modules/es.array.reduce");
 
+require("core-js/modules/es.object.assign");
+
 require("core-js/modules/es.object.entries");
-
-require("core-js/modules/es.object.get-own-property-descriptor");
-
-require("core-js/modules/es.object.get-own-property-descriptors");
 
 require("core-js/modules/es.object.keys");
 
@@ -47,19 +41,13 @@ var _config = require("./config");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 // detect IE 6 - 11
 var isOldIE = typeof navigator !== 'undefined' && (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') !== -1);
 
 var fixIE = function fixIE(css) {
   if (!isOldIE || css.display !== 'flex') return css; // dont need to do anything
 
-  return _objectSpread({
+  return Object.assign({
     'min-width': '0%'
   }, css);
 };
@@ -119,7 +107,7 @@ var rules = [// spacing shorthands
     var dirs = directions[dir] || [''];
     var val = scaleValue(n);
     return dirs.reduce(function (prev, d) {
-      return _objectSpread(_objectSpread({}, prev), decl(d ? prop + "-" + d : prop, px(val)));
+      return Object.assign({}, prev, decl(d ? prop + "-" + d : prop, px(val)));
     }, {});
   }
 }, // height and width shorthands
@@ -207,7 +195,7 @@ var rules = [// spacing shorthands
 }, {
   match: 'center',
   map: function map(n) {
-    return n ? _objectSpread(_objectSpread({}, decl('justify-content', 'center')), decl('align-items', 'center')) : {};
+    return n ? Object.assign({}, decl('justify-content', 'center'), decl('align-items', 'center')) : {};
   }
 }];
 
@@ -218,14 +206,14 @@ var _default = _moize.default.deep(function (props) {
     rules.forEach(function (rule) {
       if (typeof rule.match === 'string') {
         if (k === rule.match) {
-          prev = _objectSpread(_objectSpread({}, prev), rule.map(v, k, props));
+          prev = Object.assign({}, prev, rule.map(v, k, props));
         }
 
         return;
       }
 
       if (rule.match.test(k)) {
-        prev = _objectSpread(_objectSpread({}, prev), rule.map(v, k, props));
+        prev = Object.assign({}, prev, rule.map(v, k, props));
       }
     });
     return prev;
