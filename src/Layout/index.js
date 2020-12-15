@@ -43,7 +43,17 @@ export const propTypes = {
   auto: PropTypes.bool,
   center: PropTypes.bool
 }
-const ourProps = Object.keys(propTypes)
+
+// this ordering is important, it determines how rules are applied
+const ourProps = [
+  'm', 'mb', 'mt', 'mr', 'ml', 'mx', 'my',
+  'p', 'pb', 'pt', 'pr', 'pl', 'px', 'py',
+  'w', 'h', 'flex', 'wrap', 'auto', 'center',
+  'reverse', 'alignSelf', 'alignContent',
+  'basis', 'grow', 'shrink', 'center',
+  'column', 'align', 'justify', 'order',
+  'inline'
+]
 
 const ourPropsWithExtra = [ ...ourProps, 'className' ]
 

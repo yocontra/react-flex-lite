@@ -66,9 +66,10 @@ var propTypes = {
   basis: _propTypes.default.number,
   auto: _propTypes.default.bool,
   center: _propTypes.default.bool
-};
+}; // this ordering is important, it determines how rules are applied
+
 exports.propTypes = propTypes;
-var ourProps = Object.keys(propTypes);
+var ourProps = ['m', 'mb', 'mt', 'mr', 'ml', 'mx', 'my', 'p', 'pb', 'pt', 'pr', 'pl', 'px', 'py', 'w', 'h', 'flex', 'wrap', 'auto', 'center', 'reverse', 'alignSelf', 'alignContent', 'basis', 'grow', 'shrink', 'center', 'column', 'align', 'justify', 'order', 'inline'];
 var ourPropsWithExtra = [].concat(ourProps, ['className']);
 
 var getPropsWithLayout = function getPropsWithLayout(props, defaultProps) {
