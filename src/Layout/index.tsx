@@ -1,9 +1,9 @@
-import { forwardRef } from 'react'
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
 import pick from 'lodash.pick'
 import omit from 'lodash.omit'
 import cn from 'classnames'
 import hoist from 'hoist-non-react-statics'
-import PropTypes from 'prop-types'
 import getStyle from './getStyle'
 
 const px = PropTypes.oneOfType([ PropTypes.string, PropTypes.number ])
@@ -57,22 +57,40 @@ const ourProps = [
 
 const ourPropsWithExtra = [ ...ourProps, 'className' ]
 
-export const getPropsWithLayout = (props, defaultProps) => {
+export type StyleProps = PropTypes.InferProps<typeof propTypes>;
+export interface InjectedLayoutProps extends StyleProps {
+  className?: string
+  [key: string]: any
+}
+export type Ref = any
+ 
+/**
+ * TODO Document Me
+ * @param props 
+ * @param defaultProps 
+ */
+export const getPropsWithLayout = <P extends InjectedLayoutProps>(
+  props: P, 
+  defaultProps?: P
+): Exclude<P, InjectedLayoutProps> => {
   const fullProps = defaultProps ? { ...defaultProps, ...props } : props
   const passThrough = omit(props, ourPropsWithExtra)
   const styleProps = pick(fullProps, ourProps)
-  if (Object.keys(styleProps).length === 0) return props
+  if (Object.keys(styleProps).length === 0) return props as Exclude<P, InjectedLayoutProps>
   const ourClass = getStyle(styleProps)
-  const className = props.className
+  const className: string = props.className
     ? cn(ourClass, props.className)
     : ourClass
-  return { className, ...passThrough }
+  return { className, ...passThrough } as Exclude<P, InjectedLayoutProps>
 }
 
-const Layout = (InputComponent, defaultProps) => {
-  const out = forwardRef((props, ref) => {
+const Layout = <P extends InjectedLayoutProps>(
+  InputComponent: React.ComponentType<P>,
+  defaultProps?: P
+) => {
+  const out = forwardRef<Ref, P>((props, ref) => {
     const nprops = getPropsWithLayout(props, defaultProps)
-    return <InputComponent ref={ref} {...nprops} />
+    return <InputComponent ref={ref} {...nprops as P} />
   })
   hoist(out, InputComponent)
   const name = InputComponent.displayName || InputComponent.name
@@ -82,7 +100,7 @@ const Layout = (InputComponent, defaultProps) => {
       ...InputComponent.propTypes,
       ...propTypes
     }
-    : propTypes
+    : propTypes as any // TODO FIX ME
   return out
 }
 export default Layout

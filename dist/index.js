@@ -1,97 +1,98 @@
 "use strict";
-
-require("core-js/modules/es.array.concat");
-
-require("core-js/modules/es.object.assign");
-
-exports.__esModule = true;
-exports.Flex = exports.Box = void 0;
-
-var _react = require("react");
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _Layout = _interopRequireWildcard(require("./Layout"));
-
-exports.getPropsWithLayout = _Layout.getPropsWithLayout;
-exports.propTypes = _Layout.propTypes;
-exports.Layout = _Layout.default;
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
-
-var componentPropTypes = Object.assign({
-  as: _propTypes.default.string,
-  children: _propTypes.default.node
-}, _Layout.propTypes);
-
-var Box = /*#__PURE__*/function (_PureComponent) {
-  _inheritsLoose(Box, _PureComponent);
-
-  function Box() {
-    var _this;
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _PureComponent.call.apply(_PureComponent, [this].concat(args)) || this;
-
-    _this.render = function () {
-      var _this$props = _this.props,
-          as = _this$props.as,
-          children = _this$props.children,
-          rest = _objectWithoutPropertiesLoose(_this$props, ["as", "children"]);
-
-      return /*#__PURE__*/(0, _react.createElement)(as || 'div', (0, _Layout.getPropsWithLayout)(rest), children);
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
     };
-
-    return _this;
-  }
-
-  return Box;
-}(_react.PureComponent);
-
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Flex = exports.Box = exports.Layout = exports.propTypes = exports.getPropsWithLayout = void 0;
+var react_1 = require("react");
+var prop_types_1 = __importDefault(require("prop-types"));
+var Layout_1 = __importStar(require("./Layout"));
+Object.defineProperty(exports, "getPropsWithLayout", { enumerable: true, get: function () { return Layout_1.getPropsWithLayout; } });
+Object.defineProperty(exports, "propTypes", { enumerable: true, get: function () { return Layout_1.propTypes; } });
+Object.defineProperty(exports, "Layout", { enumerable: true, get: function () { return Layout_1.default; } });
+var componentPropTypes = __assign({ as: prop_types_1.default.string, children: prop_types_1.default.node }, Layout_1.propTypes);
+var Box = /** @class */ (function (_super) {
+    __extends(Box, _super);
+    function Box() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.render = function () {
+            var _a = _this.props, as = _a.as, children = _a.children, rest = __rest(_a, ["as", "children"]);
+            return react_1.createElement(as || 'div', Layout_1.getPropsWithLayout(rest), children);
+        };
+        return _this;
+    }
+    Box.displayName = 'Box';
+    Box.propTypes = componentPropTypes;
+    return Box;
+}(react_1.PureComponent));
 exports.Box = Box;
-Box.displayName = 'Box';
-Box.propTypes = componentPropTypes;
-
-var Flex = /*#__PURE__*/function (_PureComponent2) {
-  _inheritsLoose(Flex, _PureComponent2);
-
-  function Flex() {
-    var _this2;
-
-    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-      args[_key2] = arguments[_key2];
+var Flex = /** @class */ (function (_super) {
+    __extends(Flex, _super);
+    function Flex() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.render = function () {
+            var _a = _this.props, as = _a.as, children = _a.children, rest = __rest(_a, ["as", "children"]);
+            return react_1.createElement(as || 'div', Layout_1.getPropsWithLayout(rest, { flex: true }), children);
+        };
+        return _this;
     }
-
-    _this2 = _PureComponent2.call.apply(_PureComponent2, [this].concat(args)) || this;
-
-    _this2.render = function () {
-      var _this2$props = _this2.props,
-          as = _this2$props.as,
-          children = _this2$props.children,
-          rest = _objectWithoutPropertiesLoose(_this2$props, ["as", "children"]);
-
-      return /*#__PURE__*/(0, _react.createElement)(as || 'div', (0, _Layout.getPropsWithLayout)(rest, {
-        flex: true
-      }), children);
-    };
-
-    return _this2;
-  }
-
-  return Flex;
-}(_react.PureComponent);
-
+    Flex.displayName = 'Flex';
+    Flex.propTypes = componentPropTypes;
+    return Flex;
+}(react_1.PureComponent));
 exports.Flex = Flex;
-Flex.displayName = 'Flex';
-Flex.propTypes = componentPropTypes;
+//# sourceMappingURL=index.js.map

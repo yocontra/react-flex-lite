@@ -5,15 +5,16 @@ import { space } from './config'
 
 // detect IE 6 - 11
 const isOldIE = typeof navigator !== 'undefined' && (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') !== -1)
-const fixIE = (css) => {
+
+const fixIE = (css: any) => {
   if (!isOldIE || css.display !== 'flex') return css // dont need to do anything
   return {
     'min-width': '0%',
     ...css
   }
 }
-const mrule = memo.deep(rule)
-const directions = {
+const mrule = memo.deep(rule as memo.Fn)
+const directions: { [key: string]: string[]} = {
   t: [ 'top' ],
   r: [ 'right' ],
   b: [ 'bottom' ],
@@ -21,18 +22,18 @@ const directions = {
   x: [ 'left', 'right' ],
   y: [ 'top', 'bottom' ]
 }
-const spacingTypes = {
+const spacingTypes: { [key: string]: string} = {
   m: 'margin',
   p: 'padding'
 }
-const num = (n) => typeof n === 'number' && !isNaN(n)
-const px = (n) => num(n) ? `${n}px` : n
-const heightWidth = (n) => !num(n) || n > 1 ? px(n) : `${n * 100}%`
-const scaleValue = (n) => {
+const num = (n: any) => typeof n === 'number' && !isNaN(n)
+const px = (n: number) => num(n) ? `${n}px` : n
+const heightWidth = (n: number) => !num(n) || n > 1 ? px(n) : `${n * 100}%`
+const scaleValue = (n: number) => {
   const neg = n < 0 ? -1 : 1
   return !num(n) ? n : (space[Math.abs(n)] || Math.abs(n)) * neg
 }
-const decl = (k, v) => {
+const decl = (k: string, v: number | string | undefined) => {
   if (!k || v == null) return {}
   const nk = supportedProperty(k)
   const nv = supportedValue(k, v)
@@ -44,7 +45,7 @@ const rules = [
   // spacing shorthands
   {
     match: new RegExp(`^[${Object.keys(spacingTypes).join('')}][${Object.keys(directions).join('')}]?$`),
-    map: (n, key) => {
+    map: (n: number, key: string) => {
       const [ type, dir ] = key.split('')
       const prop = spacingTypes[type]
       const dirs = directions[dir] || [ '' ]
@@ -58,79 +59,79 @@ const rules = [
   // height and width shorthands
   {
     match: 'h',
-    map: (n) => decl('height', heightWidth(n))
+    map: (n: number) => decl('height', heightWidth(n))
   },
   {
     match: 'w',
-    map: (n) => decl('width', heightWidth(n))
+    map: (n: number) => decl('width', heightWidth(n))
   },
   // flexbox specific attributes
   {
     match: 'flex',
-    map: (n, k, others) => {
+    map: (n: number, k: string, others: { inline: string }) => {
       const flex = others.inline ? 'inline-flex' : 'flex'
       return decl('display', n ? flex : 'block')
     }
   },
   {
     match: 'wrap',
-    map: (n) => decl('flex-wrap', n ? 'wrap' : 'nowrap')
+    map: (n: number) => decl('flex-wrap', n ? 'wrap' : 'nowrap')
   },
   {
     match: 'reverse',
-    map: (n, k, others) => {
+    map: (n: number, k: string, others: { column: boolean }) => {
       if (others.column) return {} // column rule will handle it
       return decl('flex-direction', n ? 'row-reverse' : undefined)
     }
   },
   {
     match: 'column',
-    map: (n, k, others) => {
+    map: (n: number, k: string, others: { reverse: string }) => {
       const base = others.reverse ? 'column-reverse' : 'column'
       return decl('flex-direction', n ? base : undefined)
     }
   },
   {
     match: 'align',
-    map: (n) => decl('align-items', n)
+    map: (n: string) => decl('align-items', n)
   },
   {
     match: 'alignContent',
-    map: (n) => decl('align-content', n)
+    map: (n: string) => decl('align-content', n)
   },
   {
     match: 'alignSelf',
-    map: (n) => decl('align-self', n)
+    map: (n: string) => decl('align-self', n)
   },
   {
     match: 'justify',
-    map: (n) => decl('justify-content', n)
+    map: (n: string) => decl('justify-content', n)
   },
   {
     match: 'order',
-    map: (n) => decl('order', n)
+    map: (n: number | string) => decl('order', n)
   },
   {
     match: 'shrink',
-    map: (n) => decl('flex-shrink', +n)
+    map: (n: number | string) => decl('flex-shrink', +n)
   },
   {
     match: 'grow',
-    map: (n) => decl('flex-grow', +n)
+    map: (n: number | string) => decl('flex-grow', +n)
   },
   {
     match: 'basis',
-    map: (n) => decl('flex-basis', n)
+    map: (n: number | string) => decl('flex-basis', n)
   },
   // flexbox shorthands
   {
     match: 'auto',
-    map: (n) =>
+    map: (n: number) =>
       decl('flex', n ? '1 1 auto' : undefined)
   },
   {
     match: 'center',
-    map: (n) => n ? {
+    map: (n: string) => n ? {
       ...decl('justify-content', 'center'),
       ...decl('align-items', 'center')
     } : {}
@@ -142,16 +143,17 @@ export default memo.deep((props) => {
     rules.forEach((rule) => {
       if (typeof rule.match === 'string') {
         if (k === rule.match) {
-          prev = { ...prev, ...rule.map(v, k, props) }
+          prev = { ...prev, ...rule.map(v as never, k, props) } // TODO FIXME
         }
         return
       }
 
       if (rule.match.test(k)) {
-        prev = { ...prev, ...rule.map(v, k, props) }
+        prev = { ...prev, ...rule.map(v as never, k, props) } // TODO FIXME
       }
     })
     return prev
   }, {})
+  console.log(css)
   return Object.keys(css).length ? mrule(fixIE(css)) : undefined
 })

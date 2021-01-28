@@ -8,7 +8,13 @@ const componentPropTypes = {
   ...propTypes
 }
 
-class Box extends PureComponent {
+type BaseComponentProps = PropTypes.InferProps<typeof componentPropTypes>;
+
+export interface ComponentProps extends BaseComponentProps {
+  [key: string]: any
+}
+
+class Box extends PureComponent<ComponentProps> {
   static displayName = 'Box'
   static propTypes = componentPropTypes
 
@@ -18,7 +24,7 @@ class Box extends PureComponent {
   }
 }
 
-class Flex extends PureComponent {
+class Flex extends PureComponent<ComponentProps> {
   static displayName = 'Flex'
   static propTypes = componentPropTypes
 

@@ -1,8 +1,8 @@
 "use strict";
-
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.space = void 0;
-
 /* eslint-disable no-magic-numbers */
-var space = [0, 8, 16, 32, 64];
-exports.space = space;
+exports.space = [
+    0, 8, 16, 32, 64
+];
+//# sourceMappingURL=config.js.map
