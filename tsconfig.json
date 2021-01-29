@@ -2,21 +2,15 @@
   "compilerOptions": {
     "target": "ES5",
     "lib": ["dom"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "commonjs",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
     "jsx": "react-jsx",
-    "rootDir": "src",
-    "outDir": "dist",
+    "module": "commonjs",
     "sourceMap": true,
+    "strict": false,
+    "rootDir": "src",
     "declaration": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "outDir": "dist"
   },
-  "include": ["src"],
+  "exclude": ["test"]
 }

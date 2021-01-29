@@ -31,7 +31,7 @@ This module aims to provide a very lightweight set of components on top of flexb
 ```jsx
 import { Box, Flex } from 'react-flex-lite'
 
-const Example = () =>
+const Example = () => (
   <Flex column auto>
     <Flex shrink={0}>
       <Box>1</Box>
@@ -44,6 +44,7 @@ const Example = () =>
       <Box>3</Box>
     </Flex>
   </Flex>
+)
 ```
 
 ### HOC

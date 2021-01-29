@@ -8,7 +8,7 @@ const componentPropTypes = {
   ...propTypes
 }
 
-type BaseComponentProps = PropTypes.InferProps<typeof componentPropTypes>;
+type BaseComponentProps = PropTypes.InferProps<typeof componentPropTypes>
 
 export interface ComponentProps extends BaseComponentProps {
   [key: string]: any
@@ -20,7 +20,11 @@ class Box extends PureComponent<ComponentProps> {
 
   render = () => {
     const { as, children, ...rest } = this.props
-    return createElement(as || 'div', getPropsWithLayout({...rest, 'data-testid': 'box' }), children)
+    return createElement(
+      as || 'div',
+      getPropsWithLayout({ ...rest, 'data-testid': 'box' }),
+      children
+    )
   }
 }
 
@@ -30,11 +34,12 @@ class Flex extends PureComponent<ComponentProps> {
 
   render = () => {
     const { as, children, ...rest } = this.props
-    return createElement(as || 'div', getPropsWithLayout({...rest, 'data-testid': 'flex' }, { flex: true }), children)
+    return createElement(
+      as || 'div',
+      getPropsWithLayout({ ...rest, 'data-testid': 'flex' }, { flex: true }),
+      children
+    )
   }
 }
 
-export {
-  getPropsWithLayout, propTypes,
-  Layout, Box, Flex
-}
+export { getPropsWithLayout, propTypes, Layout, Box, Flex }
