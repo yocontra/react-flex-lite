@@ -14,7 +14,7 @@ const fixIE = (css: any) => {
   }
 }
 const mrule = memo.deep(rule as memo.Fn)
-const directions: { [key: string]: string[]} = {
+const directions: { [key: string]: string[] } = {
   t: [ 'top' ],
   r: [ 'right' ],
   b: [ 'bottom' ],
@@ -22,7 +22,7 @@ const directions: { [key: string]: string[]} = {
   x: [ 'left', 'right' ],
   y: [ 'top', 'bottom' ]
 }
-const spacingTypes: { [key: string]: string} = {
+const spacingTypes: { [key: string]: string } = {
   m: 'margin',
   p: 'padding'
 }
