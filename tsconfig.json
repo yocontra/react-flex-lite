@@ -17,6 +17,7 @@
     "outDir": "dist",
     "sourceMap": true,
     "declaration": true,
+    "typeRoots" : ["./src"],
   },
-  "include": ["src"]
+  "include": ["src"],
 }
