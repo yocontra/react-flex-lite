@@ -163,7 +163,6 @@ exports.default = moize_1.default.deep(function (props) {
         });
         return prev;
     }, {});
-    console.log(css);
     return Object.keys(css).length ? mrule(fixIE(css)) : undefined;
 });
 //# sourceMappingURL=getStyle.js.map

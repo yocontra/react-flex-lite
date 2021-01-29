@@ -20,7 +20,7 @@ class Box extends PureComponent<ComponentProps> {
 
   render = () => {
     const { as, children, ...rest } = this.props
-    return createElement(as || 'div', getPropsWithLayout(rest), children)
+    return createElement(as || 'div', getPropsWithLayout({...rest, 'data-testid': 'box' }), children)
   }
 }
 
@@ -30,7 +30,7 @@ class Flex extends PureComponent<ComponentProps> {
 
   render = () => {
     const { as, children, ...rest } = this.props
-    return createElement(as || 'div', getPropsWithLayout(rest, { flex: true }), children)
+    return createElement(as || 'div', getPropsWithLayout({...rest, 'data-testid': 'flex' }, { flex: true }), children)
   }
 }
 

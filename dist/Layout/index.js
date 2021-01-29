@@ -79,9 +79,11 @@ var ourProps = [
 ];
 var ourPropsWithExtra = __spreadArrays(ourProps, ['className']);
 /**
- * TODO Document Me
+ * Function used to generate a className for the component as well
+ * as strip out any non-style props
  * @param props
  * @param defaultProps
+ * @returns {object} returns a className and any other non-style props
  */
 var getPropsWithLayout = function (props, defaultProps) {
     var fullProps = defaultProps ? __assign(__assign({}, defaultProps), props) : props;

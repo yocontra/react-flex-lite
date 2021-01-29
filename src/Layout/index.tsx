@@ -65,9 +65,11 @@ export interface InjectedLayoutProps extends StyleProps {
 export type Ref = any
  
 /**
- * TODO Document Me
+ * Function used to generate a className for the component as well
+ * as strip out any non-style props
  * @param props 
  * @param defaultProps 
+ * @returns {object} returns a className and any other non-style props
  */
 export const getPropsWithLayout = <P extends InjectedLayoutProps>(
   props: P, 

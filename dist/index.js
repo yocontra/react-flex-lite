@@ -71,7 +71,7 @@ var Box = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.render = function () {
             var _a = _this.props, as = _a.as, children = _a.children, rest = __rest(_a, ["as", "children"]);
-            return react_1.createElement(as || 'div', Layout_1.getPropsWithLayout(rest), children);
+            return react_1.createElement(as || 'div', Layout_1.getPropsWithLayout(__assign(__assign({}, rest), { 'data-testid': 'box' })), children);
         };
         return _this;
     }
@@ -86,7 +86,7 @@ var Flex = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.render = function () {
             var _a = _this.props, as = _a.as, children = _a.children, rest = __rest(_a, ["as", "children"]);
-            return react_1.createElement(as || 'div', Layout_1.getPropsWithLayout(rest, { flex: true }), children);
+            return react_1.createElement(as || 'div', Layout_1.getPropsWithLayout(__assign(__assign({}, rest), { 'data-testid': 'flex' }), { flex: true }), children);
         };
         return _this;
     }

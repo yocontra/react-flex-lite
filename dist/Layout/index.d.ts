@@ -40,9 +40,11 @@ export interface InjectedLayoutProps extends StyleProps {
 }
 export declare type Ref = any;
 /**
- * TODO Document Me
+ * Function used to generate a className for the component as well
+ * as strip out any non-style props
  * @param props
  * @param defaultProps
+ * @returns {object} returns a className and any other non-style props
  */
 export declare const getPropsWithLayout: <P extends InjectedLayoutProps>(props: P, defaultProps?: P | undefined) => Exclude<P, InjectedLayoutProps>;
 declare const Layout: <P extends InjectedLayoutProps>(InputComponent: React.ComponentType<P>, defaultProps?: P | undefined) => React.ForwardRefExoticComponent<React.PropsWithoutRef<P> & React.RefAttributes<any>>;
