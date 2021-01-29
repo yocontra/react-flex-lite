@@ -56,10 +56,6 @@ import { Layout } from 'react-flex-lite'
 const Example = () => <div>Test</div>
 ```
 
-## API
-
-TODO
-
-[downloads-image]: http://img.shields.io/npm/dm/react-flex-lite.svg
+[downloads-image]: https://img.shields.io/npm/dm/react-flex-lite.svg
 [npm-url]: https://npmjs.org/package/react-flex-lite
-[npm-image]: http://img.shields.io/npm/v/react-flex-lite.svg
+[npm-image]: https://img.shields.io/npm/v/react-flex-lite.svg
