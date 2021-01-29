@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "lib": ["dom"],
+    "jsx": "react-jsx",
+    "module": "commonjs",
+    "sourceMap": true,
+    "strict": false,
+    "rootDir": "src",
+    "declaration": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "outDir": "dist"
+  },
+  "exclude": ["test"]
+}
