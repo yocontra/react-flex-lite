@@ -16,7 +16,7 @@ const fixIE = (css: any) => {
     ...css
   }
 }
-const mrule = memo.deep(rule as memo.Fn)
+const mrule = memo.deep(rule, { maxSize: 1024 })
 const directions: { [key: string]: string[] } = {
   t: ['top'],
   r: ['right'],

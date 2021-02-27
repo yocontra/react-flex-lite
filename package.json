@@ -1,6 +1,6 @@
 {
   "name": "react-flex-lite",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "Flexbox components for React, as minimal as possible",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -39,7 +39,7 @@
     "hoist-non-react-statics": "^3.2.1",
     "lodash.omit": "^4.5.0",
     "lodash.pick": "^4.4.0",
-    "moize": "^5.4.4",
+    "moize": "^6.0.0",
     "nano-css": "^5.0.0",
     "prop-types": "^15.7.2"
   },
