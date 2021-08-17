@@ -17,7 +17,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var css_vendor_1 = require("css-vendor");
 var moize_1 = __importDefault(require("moize"));
 var nano_1 = require("./nano");
-var config_1 = require("./config");
 // detect IE 6 - 11
 var isOldIE = typeof navigator !== 'undefined' &&
     (navigator.userAgent.indexOf('MSIE') !== -1 ||
@@ -43,9 +42,9 @@ var spacingTypes = {
 var num = function (n) { return typeof n === 'number' && !isNaN(n); };
 var px = function (n) { return (num(n) ? n + "px" : n); };
 var heightWidth = function (n) { return (!num(n) || n > 1 ? px(n) : n * 100 + "%"); };
-var scaleValue = function (n) {
+var scaleValue = function (n, config) {
     var neg = n < 0 ? -1 : 1;
-    return !num(n) ? n : (config_1.space[Math.abs(n)] || Math.abs(n)) * neg;
+    return !num(n) ? n : (config.space[Math.abs(n)] || Math.abs(n)) * neg;
 };
 var decl = function (k, v) {
     var _a;
@@ -61,11 +60,11 @@ var rules = [
     // spacing shorthands
     {
         match: new RegExp("^[" + Object.keys(spacingTypes).join('') + "][" + Object.keys(directions).join('') + "]?$"),
-        map: function (n, key) {
+        map: function (n, key, props, config) {
             var _a = key.split(''), type = _a[0], dir = _a[1];
             var prop = spacingTypes[type];
             var dirs = directions[dir] || [''];
-            var val = scaleValue(n);
+            var val = scaleValue(n, config);
             return dirs.reduce(function (prev, d) { return (__assign(__assign({}, prev), decl(d ? prop + "-" + d : prop, px(val)))); }, {});
         }
     },
@@ -150,18 +149,18 @@ var rules = [
         }
     }
 ];
-exports.default = moize_1.default.deep(function (props) {
+exports.default = moize_1.default.deep(function (props, config) {
     var css = Object.entries(props).reduce(function (prev, _a) {
         var k = _a[0], v = _a[1];
         rules.forEach(function (rule) {
             if (typeof rule.match === 'string') {
                 if (k === rule.match) {
-                    prev = __assign(__assign({}, prev), rule.map(v, k, props)); // TODO FIXME
+                    prev = __assign(__assign({}, prev), rule.map(v, k, props, config));
                 }
                 return;
             }
             if (rule.match.test(k)) {
-                prev = __assign(__assign({}, prev), rule.map(v, k, props)); // TODO FIXME
+                prev = __assign(__assign({}, prev), rule.map(v, k, props, config));
             }
         });
         return prev;

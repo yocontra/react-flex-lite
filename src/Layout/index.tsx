@@ -1,10 +1,12 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef, createContext, useContext } from 'react'
 import PropTypes from 'prop-types'
 import pick from 'lodash.pick'
 import omit from 'lodash.omit'
 import cn from 'classnames'
 import hoist from 'hoist-non-react-statics'
+import * as defaultConfig from './config'
 import getStyle from './getStyle'
+import type { Configuration } from '../types'
 
 const px = PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 export const propTypes = {
@@ -118,7 +120,6 @@ export interface InjectedLayoutProps extends StyleProps {
   className?: string
   [key: string]: any
 }
-export type Ref = any
 
 /**
  * Function used to generate a className for the component as well
@@ -129,27 +130,31 @@ export type Ref = any
  */
 export const getPropsWithLayout = <P extends InjectedLayoutProps>(
   props: P,
-  defaultProps?: P
+  defaultProps?: P,
+  config?: Configuration
 ): Exclude<P, InjectedLayoutProps> => {
   const fullProps = defaultProps ? { ...defaultProps, ...props } : props
   const passThrough = omit(props, ourPropsWithExtra)
   const styleProps = pick(fullProps, ourProps)
   if (Object.keys(styleProps).length === 0)
     return props as Exclude<P, InjectedLayoutProps>
-  const ourClass = getStyle(styleProps)
+  const ourClass = getStyle(styleProps, config || defaultConfig)
   const className: string = props.className
     ? cn(ourClass, props.className)
     : ourClass
   return { className, ...passThrough } as Exclude<P, InjectedLayoutProps>
 }
 
+export const LayoutContext = createContext<Configuration>(defaultConfig)
+
 const Layout = <P extends InjectedLayoutProps>(
   InputComponent: React.ComponentType<P>,
   defaultProps?: P
 ) => {
-  const out = forwardRef<Ref, P>((props, ref) => {
-    const nprops = getPropsWithLayout(props, defaultProps)
-    return <InputComponent ref={ref} {...(nprops as P)} />
+  const config = useContext(LayoutContext)
+  const out = forwardRef<any, P>((props: P, ref) => {
+    const nprops: P = getPropsWithLayout(props, defaultProps, config)
+    return <InputComponent ref={ref} {...nprops} />
   })
   hoist(out, InputComponent)
   const name = InputComponent.displayName || InputComponent.name

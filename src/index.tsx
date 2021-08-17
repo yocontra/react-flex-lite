@@ -1,6 +1,11 @@
 import { createElement, PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { getPropsWithLayout, propTypes, default as Layout } from './Layout'
+import {
+  getPropsWithLayout,
+  propTypes,
+  LayoutContext,
+  default as Layout
+} from './Layout'
 
 const componentPropTypes = {
   as: PropTypes.string,
@@ -20,7 +25,7 @@ class Box extends PureComponent<ComponentProps> {
 
   render = () => {
     const { as, children, ...rest } = this.props
-    return createElement(as || 'div', getPropsWithLayout({ ...rest }), children)
+    return createElement(as || 'div', getPropsWithLayout(rest), children)
   }
 }
 
@@ -32,10 +37,10 @@ class Flex extends PureComponent<ComponentProps> {
     const { as, children, ...rest } = this.props
     return createElement(
       as || 'div',
-      getPropsWithLayout({ ...rest }, { flex: true }),
+      getPropsWithLayout(rest, { flex: true }),
       children
     )
   }
 }
 
-export { getPropsWithLayout, propTypes, Layout, Box, Flex }
+export { getPropsWithLayout, propTypes, Layout, LayoutContext, Box, Flex }

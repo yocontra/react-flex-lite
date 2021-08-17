@@ -1,4 +1,7 @@
-declare const _default: import("moize").Moized<(props: any) => string, Partial<{
+import type { Configuration } from '../types';
+declare type Value = number | string | undefined;
+declare type Props = Record<string, Value>;
+declare const _default: import("moize").Moized<(props: Props, config: Configuration) => string, Partial<{
     isDeepEqual: boolean;
     isPromise: boolean;
     isReact: boolean;

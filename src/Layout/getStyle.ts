@@ -1,7 +1,20 @@
 import { supportedProperty, supportedValue } from 'css-vendor'
 import memo from 'moize'
 import { rule } from './nano'
-import { space } from './config'
+import type { Configuration } from '../types'
+
+type Value = number | string | undefined
+type Props = Record<string, Value>
+type Mapper = (
+  v: Value,
+  k: string,
+  props: Props,
+  config: Configuration
+) => Record<string, Value>
+type Rule = {
+  match: string | RegExp
+  map: Mapper
+}
 
 // detect IE 6 - 11
 const isOldIE =
@@ -9,7 +22,7 @@ const isOldIE =
   (navigator.userAgent.indexOf('MSIE') !== -1 ||
     navigator.appVersion.indexOf('Trident/') !== -1)
 
-const fixIE = (css: any) => {
+const fixIE = (css: Record<string, any>) => {
   if (!isOldIE || css.display !== 'flex') return css // dont need to do anything
   return {
     'min-width': '0%',
@@ -17,7 +30,7 @@ const fixIE = (css: any) => {
   }
 }
 const mrule = memo.deep(rule, { maxSize: 1024 })
-const directions: { [key: string]: string[] } = {
+const directions = {
   t: ['top'],
   r: ['right'],
   b: ['bottom'],
@@ -25,16 +38,16 @@ const directions: { [key: string]: string[] } = {
   x: ['left', 'right'],
   y: ['top', 'bottom']
 }
-const spacingTypes: { [key: string]: string } = {
+const spacingTypes = {
   m: 'margin',
   p: 'padding'
 }
 const num = (n: any) => typeof n === 'number' && !isNaN(n)
 const px = (n: number) => (num(n) ? `${n}px` : n)
 const heightWidth = (n: number) => (!num(n) || n > 1 ? px(n) : `${n * 100}%`)
-const scaleValue = (n: number) => {
+const scaleValue = (n: number, config: Configuration) => {
   const neg = n < 0 ? -1 : 1
-  return !num(n) ? n : (space[Math.abs(n)] || Math.abs(n)) * neg
+  return !num(n) ? n : (config.space[Math.abs(n)] || Math.abs(n)) * neg
 }
 const decl = (k: string, v: number | string | undefined) => {
   if (!k || v == null) return {}
@@ -44,7 +57,7 @@ const decl = (k: string, v: number | string | undefined) => {
   return { [nk]: nv }
 }
 
-const rules = [
+const rules: Rule[] = [
   // spacing shorthands
   {
     match: new RegExp(
@@ -52,11 +65,11 @@ const rules = [
         ''
       )}]?$`
     ),
-    map: (n: number, key: string) => {
+    map: (n: number, key: string, props: Props, config: Configuration) => {
       const [type, dir] = key.split('')
       const prop = spacingTypes[type]
       const dirs = directions[dir] || ['']
-      const val = scaleValue(n)
+      const val = scaleValue(n, config)
       return dirs.reduce(
         (prev, d) => ({
           ...prev,
@@ -89,14 +102,14 @@ const rules = [
   },
   {
     match: 'reverse',
-    map: (n: number, k: string, others: { column: boolean }) => {
+    map: (n: number, k: string, others: { column?: boolean }) => {
       if (others.column) return {} // column rule will handle it
       return decl('flex-direction', n ? 'row-reverse' : undefined)
     }
   },
   {
     match: 'column',
-    map: (n: number, k: string, others: { reverse: string }) => {
+    map: (n: number, k: string, others: { reverse?: string }) => {
       const base = others.reverse ? 'column-reverse' : 'column'
       return decl('flex-direction', n ? base : undefined)
     }
@@ -150,18 +163,18 @@ const rules = [
   }
 ]
 
-export default memo.deep((props) => {
+export default memo.deep((props: Props, config: Configuration) => {
   const css = Object.entries(props).reduce((prev, [k, v]) => {
     rules.forEach((rule) => {
       if (typeof rule.match === 'string') {
         if (k === rule.match) {
-          prev = { ...prev, ...rule.map(v as never, k, props) } // TODO FIXME
+          prev = { ...prev, ...rule.map(v, k, props, config) }
         }
         return
       }
 
       if (rule.match.test(k)) {
-        prev = { ...prev, ...rule.map(v as never, k, props) } // TODO FIXME
+        prev = { ...prev, ...rule.map(v, k, props, config) }
       }
     })
     return prev

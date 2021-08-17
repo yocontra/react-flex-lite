@@ -56,6 +56,31 @@ import { Layout } from 'react-flex-lite'
 const Example = () => <div>Test</div>
 ```
 
+## Providing your own grid
+
+By default, this library comes with an 8px grid configuration:
+
+```json
+{
+  "space": [0, 8, 16, 32, 64]
+}
+```
+
+To provide your own configuration, you can provide it via context:
+
+```js
+import { LayoutContext } from 'react-flex-lite'
+
+const config = {
+  space: [0, 10, 20, 30, 40]
+}
+
+// in the root of your app
+;<LayoutContext.Provider value={config}>
+  <YourApplication />
+</LayoutContext.Provider>
+```
+
 [downloads-image]: https://img.shields.io/npm/dm/react-flex-lite.svg
 [npm-url]: https://npmjs.org/package/react-flex-lite
 [npm-image]: https://img.shields.io/npm/v/react-flex-lite.svg

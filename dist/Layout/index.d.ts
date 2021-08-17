@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import type { Configuration } from '../types';
 export declare const propTypes: {
     m: PropTypes.Requireable<string | number>;
     mb: PropTypes.Requireable<string | number>;
@@ -38,7 +39,6 @@ export interface InjectedLayoutProps extends StyleProps {
     className?: string;
     [key: string]: any;
 }
-export declare type Ref = any;
 /**
  * Function used to generate a className for the component as well
  * as strip out any non-style props
@@ -46,6 +46,7 @@ export declare type Ref = any;
  * @param defaultProps
  * @returns {object} returns a className and any other non-style props
  */
-export declare const getPropsWithLayout: <P extends InjectedLayoutProps>(props: P, defaultProps?: P) => Exclude<P, InjectedLayoutProps>;
+export declare const getPropsWithLayout: <P extends InjectedLayoutProps>(props: P, defaultProps?: P, config?: Configuration) => Exclude<P, InjectedLayoutProps>;
+export declare const LayoutContext: React.Context<Configuration>;
 declare const Layout: <P extends InjectedLayoutProps>(InputComponent: React.ComponentType<P>, defaultProps?: P) => React.ForwardRefExoticComponent<React.PropsWithoutRef<P> & React.RefAttributes<any>>;
 export default Layout;

@@ -1,6 +1,6 @@
 import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { getPropsWithLayout, propTypes, default as Layout } from './Layout';
+import { getPropsWithLayout, propTypes, LayoutContext, default as Layout } from './Layout';
 declare const componentPropTypes: {
     m: PropTypes.Requireable<string | number>;
     mb: PropTypes.Requireable<string | number>;
@@ -118,4 +118,4 @@ declare class Flex extends PureComponent<ComponentProps> {
     };
     render: () => import("react").DOMElement<never, Element>;
 }
-export { getPropsWithLayout, propTypes, Layout, Box, Flex };
+export { getPropsWithLayout, propTypes, Layout, LayoutContext, Box, Flex };

@@ -10,6 +10,25 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __spreadArray = (this && this.__spreadArray) || function (to, from) {
     for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
         to[j] = from[i];
@@ -19,7 +38,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getPropsWithLayout = exports.propTypes = void 0;
+exports.LayoutContext = exports.getPropsWithLayout = exports.propTypes = void 0;
 var jsx_runtime_1 = require("react/jsx-runtime");
 var react_1 = require("react");
 var prop_types_1 = __importDefault(require("prop-types"));
@@ -27,6 +46,7 @@ var lodash_pick_1 = __importDefault(require("lodash.pick"));
 var lodash_omit_1 = __importDefault(require("lodash.omit"));
 var classnames_1 = __importDefault(require("classnames"));
 var hoist_non_react_statics_1 = __importDefault(require("hoist-non-react-statics"));
+var defaultConfig = __importStar(require("./config"));
 var getStyle_1 = __importDefault(require("./getStyle"));
 var px = prop_types_1.default.oneOfType([prop_types_1.default.string, prop_types_1.default.number]);
 exports.propTypes = {
@@ -139,22 +159,24 @@ var ourPropsWithExtra = __spreadArray(__spreadArray([], ourProps), ['className']
  * @param defaultProps
  * @returns {object} returns a className and any other non-style props
  */
-var getPropsWithLayout = function (props, defaultProps) {
+var getPropsWithLayout = function (props, defaultProps, config) {
     var fullProps = defaultProps ? __assign(__assign({}, defaultProps), props) : props;
     var passThrough = lodash_omit_1.default(props, ourPropsWithExtra);
     var styleProps = lodash_pick_1.default(fullProps, ourProps);
     if (Object.keys(styleProps).length === 0)
         return props;
-    var ourClass = getStyle_1.default(styleProps);
+    var ourClass = getStyle_1.default(styleProps, config || defaultConfig);
     var className = props.className
         ? classnames_1.default(ourClass, props.className)
         : ourClass;
     return __assign({ className: className }, passThrough);
 };
 exports.getPropsWithLayout = getPropsWithLayout;
+exports.LayoutContext = react_1.createContext(defaultConfig);
 var Layout = function (InputComponent, defaultProps) {
+    var config = react_1.useContext(exports.LayoutContext);
     var out = react_1.forwardRef(function (props, ref) {
-        var nprops = exports.getPropsWithLayout(props, defaultProps);
+        var nprops = exports.getPropsWithLayout(props, defaultProps, config);
         return jsx_runtime_1.jsx(InputComponent, __assign({ ref: ref }, nprops), void 0);
     });
     hoist_non_react_statics_1.default(out, InputComponent);

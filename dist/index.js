@@ -59,12 +59,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Flex = exports.Box = exports.Layout = exports.propTypes = exports.getPropsWithLayout = void 0;
+exports.Flex = exports.Box = exports.LayoutContext = exports.Layout = exports.propTypes = exports.getPropsWithLayout = void 0;
 var react_1 = require("react");
 var prop_types_1 = __importDefault(require("prop-types"));
 var Layout_1 = __importStar(require("./Layout"));
 Object.defineProperty(exports, "getPropsWithLayout", { enumerable: true, get: function () { return Layout_1.getPropsWithLayout; } });
 Object.defineProperty(exports, "propTypes", { enumerable: true, get: function () { return Layout_1.propTypes; } });
+Object.defineProperty(exports, "LayoutContext", { enumerable: true, get: function () { return Layout_1.LayoutContext; } });
 Object.defineProperty(exports, "Layout", { enumerable: true, get: function () { return Layout_1.default; } });
 var componentPropTypes = __assign({ as: prop_types_1.default.string, children: prop_types_1.default.node }, Layout_1.propTypes);
 var Box = /** @class */ (function (_super) {
@@ -73,7 +74,7 @@ var Box = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.render = function () {
             var _a = _this.props, as = _a.as, children = _a.children, rest = __rest(_a, ["as", "children"]);
-            return react_1.createElement(as || 'div', Layout_1.getPropsWithLayout(__assign({}, rest)), children);
+            return react_1.createElement(as || 'div', Layout_1.getPropsWithLayout(rest), children);
         };
         return _this;
     }
@@ -88,7 +89,7 @@ var Flex = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.render = function () {
             var _a = _this.props, as = _a.as, children = _a.children, rest = __rest(_a, ["as", "children"]);
-            return react_1.createElement(as || 'div', Layout_1.getPropsWithLayout(__assign({}, rest), { flex: true }), children);
+            return react_1.createElement(as || 'div', Layout_1.getPropsWithLayout(rest, { flex: true }), children);
         };
         return _this;
     }
