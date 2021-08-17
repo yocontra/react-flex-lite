@@ -174,8 +174,8 @@ var getPropsWithLayout = function (props, defaultProps, config) {
 exports.getPropsWithLayout = getPropsWithLayout;
 exports.LayoutContext = react_1.createContext(defaultConfig);
 var Layout = function (InputComponent, defaultProps) {
-    var config = react_1.useContext(exports.LayoutContext);
     var out = react_1.forwardRef(function (props, ref) {
+        var config = react_1.useContext(exports.LayoutContext);
         var nprops = exports.getPropsWithLayout(props, defaultProps, config);
         return jsx_runtime_1.jsx(InputComponent, __assign({ ref: ref }, nprops), void 0);
     });

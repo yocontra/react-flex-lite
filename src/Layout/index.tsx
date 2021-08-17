@@ -151,8 +151,8 @@ const Layout = <P extends InjectedLayoutProps>(
   InputComponent: React.ComponentType<P>,
   defaultProps?: P
 ) => {
-  const config = useContext(LayoutContext)
   const out = forwardRef<any, P>((props: P, ref) => {
+    const config = useContext(LayoutContext)
     const nprops: P = getPropsWithLayout(props, defaultProps, config)
     return <InputComponent ref={ref} {...nprops} />
   })

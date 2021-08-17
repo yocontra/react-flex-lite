@@ -1,4 +1,4 @@
-import { Flex, Box } from '../src'
+import { Flex, Box, LayoutContext } from '../src'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 
@@ -27,5 +27,18 @@ describe('<Box />', () => {
     expect(boxEl).toBeInTheDocument()
     expect(boxEl).toHaveClass('box')
     expect(boxEl).toHaveStyle({ marginTop: 8 })
+  })
+  it('should work with custom context', () => {
+    const { queryByText } = render(
+      <LayoutContext.Provider value={{ space: [0, 10] }}>
+        <Box className="box" mt={1}>
+          box text
+        </Box>
+      </LayoutContext.Provider>
+    )
+    const boxEl = queryByText('box text')
+    expect(boxEl).toBeInTheDocument()
+    expect(boxEl).toHaveClass('box')
+    expect(boxEl).toHaveStyle({ marginTop: 10 })
   })
 })
