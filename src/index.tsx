@@ -1,4 +1,4 @@
-import { createElement, PureComponent, useContext } from 'react'
+import { createElement, useContext } from 'react'
 import PropTypes from 'prop-types'
 import {
   getPropsWithLayout,
