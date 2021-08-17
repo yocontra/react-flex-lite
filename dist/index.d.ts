@@ -1,4 +1,4 @@
-import { PureComponent } from 'react';
+/// <reference types="react" />
 import PropTypes from 'prop-types';
 import { getPropsWithLayout, propTypes, LayoutContext, default as Layout } from './Layout';
 declare const componentPropTypes: {
@@ -40,9 +40,10 @@ declare type BaseComponentProps = PropTypes.InferProps<typeof componentPropTypes
 export interface ComponentProps extends BaseComponentProps {
     [key: string]: any;
 }
-declare class Box extends PureComponent<ComponentProps> {
-    static displayName: string;
-    static propTypes: {
+declare const Box: {
+    ({ as, children, ...rest }: ComponentProps): import("react").DOMElement<never, Element>;
+    displayName: string;
+    propTypes: {
         m: PropTypes.Requireable<string | number>;
         mb: PropTypes.Requireable<string | number>;
         mt: PropTypes.Requireable<string | number>;
@@ -77,11 +78,11 @@ declare class Box extends PureComponent<ComponentProps> {
         as: PropTypes.Requireable<string>;
         children: PropTypes.Requireable<PropTypes.ReactNodeLike>;
     };
-    render: () => import("react").DOMElement<never, Element>;
-}
-declare class Flex extends PureComponent<ComponentProps> {
-    static displayName: string;
-    static propTypes: {
+};
+declare const Flex: {
+    ({ as, children, ...rest }: ComponentProps): import("react").DOMElement<never, Element>;
+    displayName: string;
+    propTypes: {
         m: PropTypes.Requireable<string | number>;
         mb: PropTypes.Requireable<string | number>;
         mt: PropTypes.Requireable<string | number>;
@@ -116,6 +117,5 @@ declare class Flex extends PureComponent<ComponentProps> {
         as: PropTypes.Requireable<string>;
         children: PropTypes.Requireable<PropTypes.ReactNodeLike>;
     };
-    render: () => import("react").DOMElement<never, Element>;
-}
+};
 export { getPropsWithLayout, propTypes, Layout, LayoutContext, Box, Flex };

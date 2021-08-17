@@ -1,19 +1,4 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -68,34 +53,20 @@ Object.defineProperty(exports, "propTypes", { enumerable: true, get: function ()
 Object.defineProperty(exports, "LayoutContext", { enumerable: true, get: function () { return Layout_1.LayoutContext; } });
 Object.defineProperty(exports, "Layout", { enumerable: true, get: function () { return Layout_1.default; } });
 var componentPropTypes = __assign({ as: prop_types_1.default.string, children: prop_types_1.default.node }, Layout_1.propTypes);
-var Box = /** @class */ (function (_super) {
-    __extends(Box, _super);
-    function Box() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.render = function () {
-            var _a = _this.props, as = _a.as, children = _a.children, rest = __rest(_a, ["as", "children"]);
-            return react_1.createElement(as || 'div', Layout_1.getPropsWithLayout(rest), children);
-        };
-        return _this;
-    }
-    Box.displayName = 'Box';
-    Box.propTypes = componentPropTypes;
-    return Box;
-}(react_1.PureComponent));
+var Box = function (_a) {
+    var as = _a.as, children = _a.children, rest = __rest(_a, ["as", "children"]);
+    var config = react_1.useContext(Layout_1.LayoutContext);
+    return react_1.createElement(as || 'div', Layout_1.getPropsWithLayout(rest, undefined, config), children);
+};
 exports.Box = Box;
-var Flex = /** @class */ (function (_super) {
-    __extends(Flex, _super);
-    function Flex() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.render = function () {
-            var _a = _this.props, as = _a.as, children = _a.children, rest = __rest(_a, ["as", "children"]);
-            return react_1.createElement(as || 'div', Layout_1.getPropsWithLayout(rest, { flex: true }), children);
-        };
-        return _this;
-    }
-    Flex.displayName = 'Flex';
-    Flex.propTypes = componentPropTypes;
-    return Flex;
-}(react_1.PureComponent));
+Box.displayName = 'Box';
+Box.propTypes = componentPropTypes;
+var Flex = function (_a) {
+    var as = _a.as, children = _a.children, rest = __rest(_a, ["as", "children"]);
+    var config = react_1.useContext(Layout_1.LayoutContext);
+    return react_1.createElement(as || 'div', Layout_1.getPropsWithLayout(rest, { flex: true }, config), children);
+};
 exports.Flex = Flex;
+Flex.displayName = 'Flex';
+Flex.propTypes = componentPropTypes;
 //# sourceMappingURL=index.js.map
