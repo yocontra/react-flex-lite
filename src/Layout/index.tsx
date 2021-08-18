@@ -74,6 +74,8 @@ export const propTypes = {
   grow: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
   basis: PropTypes.number,
   auto: PropTypes.bool,
+  hcenter: PropTypes.bool,
+  vcenter: PropTypes.bool,
   center: PropTypes.bool
 }
 
@@ -105,6 +107,8 @@ const ourProps = [
   'basis',
   'grow',
   'shrink',
+  'hcenter',
+  'vcenter',
   'center',
   'column',
   'align',
@@ -151,11 +155,13 @@ const Layout = <P extends InjectedLayoutProps>(
   InputComponent: React.ComponentType<P>,
   defaultProps?: P
 ) => {
-  const out = forwardRef<any, P>((props: P, ref) => {
-    const config = useContext(LayoutContext)
-    const nprops: P = getPropsWithLayout(props, defaultProps, config)
-    return <InputComponent ref={ref} {...nprops} />
-  })
+  const out = forwardRef<typeof InputComponent, P>(
+    (props: P, ref: React.Ref<typeof InputComponent>) => {
+      const config = useContext(LayoutContext)
+      const nprops: P = getPropsWithLayout(props, defaultProps, config)
+      return <InputComponent ref={ref} {...nprops} />
+    }
+  )
   hoist(out, InputComponent)
   const name = InputComponent.displayName || InputComponent.name
   out.displayName = name ? `Layout(${name})` : 'Layout'
@@ -164,7 +170,7 @@ const Layout = <P extends InjectedLayoutProps>(
         ...InputComponent.propTypes,
         ...propTypes
       }
-    : (propTypes as any) // TODO FIX ME
+    : (propTypes as any) // TODO: FIXME!
   return out
 }
 export default Layout

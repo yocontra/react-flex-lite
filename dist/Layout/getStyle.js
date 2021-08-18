@@ -142,6 +142,22 @@ var rules = [
         map: function (n) { return decl('flex', n ? '1 1 auto' : undefined); }
     },
     {
+        match: 'hcenter',
+        map: function (n, k, others) {
+            return n
+                ? others.column ? decl('align-items', 'center') : decl('justify-content', 'center')
+                : {};
+        }
+    },
+    {
+        match: 'vcenter',
+        map: function (n, k, others) {
+            return n
+                ? others.column ? decl('justify-content', 'center') : decl('align-items', 'center')
+                : {};
+        }
+    },
+    {
         match: 'center',
         map: function (n) {
             return n

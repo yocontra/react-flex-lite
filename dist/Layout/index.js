@@ -114,6 +114,8 @@ exports.propTypes = {
     grow: prop_types_1.default.oneOfType([prop_types_1.default.bool, prop_types_1.default.number]),
     basis: prop_types_1.default.number,
     auto: prop_types_1.default.bool,
+    hcenter: prop_types_1.default.bool,
+    vcenter: prop_types_1.default.bool,
     center: prop_types_1.default.bool
 };
 // this ordering is important, it determines how rules are applied
@@ -144,6 +146,8 @@ var ourProps = [
     'basis',
     'grow',
     'shrink',
+    'hcenter',
+    'vcenter',
     'center',
     'column',
     'align',
@@ -183,7 +187,7 @@ var Layout = function (InputComponent, defaultProps) {
     var name = InputComponent.displayName || InputComponent.name;
     out.displayName = name ? "Layout(" + name + ")" : 'Layout';
     out.propTypes = InputComponent.propTypes
-        ? __assign(__assign({}, InputComponent.propTypes), exports.propTypes) : exports.propTypes; // TODO FIX ME
+        ? __assign(__assign({}, InputComponent.propTypes), exports.propTypes) : exports.propTypes; // TODO: FIXME!
     return out;
 };
 exports.default = Layout;

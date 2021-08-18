@@ -32,6 +32,8 @@ export declare const propTypes: {
     grow: PropTypes.Requireable<number | boolean>;
     basis: PropTypes.Requireable<number>;
     auto: PropTypes.Requireable<boolean>;
+    hcenter: PropTypes.Requireable<boolean>;
+    vcenter: PropTypes.Requireable<boolean>;
     center: PropTypes.Requireable<boolean>;
 };
 export declare type StyleProps = PropTypes.InferProps<typeof propTypes>;
@@ -48,5 +50,5 @@ export interface InjectedLayoutProps extends StyleProps {
  */
 export declare const getPropsWithLayout: <P extends InjectedLayoutProps>(props: P, defaultProps?: P, config?: Configuration) => Exclude<P, InjectedLayoutProps>;
 export declare const LayoutContext: React.Context<Configuration>;
-declare const Layout: <P extends InjectedLayoutProps>(InputComponent: React.ComponentType<P>, defaultProps?: P) => React.ForwardRefExoticComponent<React.PropsWithoutRef<P> & React.RefAttributes<any>>;
+declare const Layout: <P extends InjectedLayoutProps>(InputComponent: React.ComponentType<P>, defaultProps?: P) => React.ForwardRefExoticComponent<React.PropsWithoutRef<P> & React.RefAttributes<React.ComponentType<P>>>;
 export default Layout;

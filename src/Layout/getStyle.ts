@@ -49,7 +49,7 @@ const scaleValue = (n: number, config: Configuration) => {
   const neg = n < 0 ? -1 : 1
   return !num(n) ? n : (config.space[Math.abs(n)] || Math.abs(n)) * neg
 }
-const decl = (k: string, v: number | string | undefined) => {
+const decl = (k: string, v: Value) => {
   if (!k || v == null) return {}
   const nk = supportedProperty(k)
   const nv = supportedValue(k, v)
@@ -150,6 +150,24 @@ const rules: Rule[] = [
   {
     match: 'auto',
     map: (n: number) => decl('flex', n ? '1 1 auto' : undefined)
+  },
+  {
+    match: 'hcenter',
+    map: (n: number, k: string, others: { column?: boolean }) =>
+      n
+        ? others.column
+          ? decl('align-items', 'center')
+          : decl('justify-content', 'center')
+        : {}
+  },
+  {
+    match: 'vcenter',
+    map: (n: number, k: string, others: { column?: boolean }) =>
+      n
+        ? others.column
+          ? decl('justify-content', 'center')
+          : decl('align-items', 'center')
+        : {}
   },
   {
     match: 'center',

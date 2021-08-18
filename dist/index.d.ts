@@ -32,6 +32,8 @@ declare const componentPropTypes: {
     grow: PropTypes.Requireable<number | boolean>;
     basis: PropTypes.Requireable<number>;
     auto: PropTypes.Requireable<boolean>;
+    hcenter: PropTypes.Requireable<boolean>;
+    vcenter: PropTypes.Requireable<boolean>;
     center: PropTypes.Requireable<boolean>;
     as: PropTypes.Requireable<string>;
     children: PropTypes.Requireable<PropTypes.ReactNodeLike>;
@@ -74,6 +76,8 @@ declare const Box: {
         grow: PropTypes.Requireable<number | boolean>;
         basis: PropTypes.Requireable<number>;
         auto: PropTypes.Requireable<boolean>;
+        hcenter: PropTypes.Requireable<boolean>;
+        vcenter: PropTypes.Requireable<boolean>;
         center: PropTypes.Requireable<boolean>;
         as: PropTypes.Requireable<string>;
         children: PropTypes.Requireable<PropTypes.ReactNodeLike>;
@@ -113,6 +117,8 @@ declare const Flex: {
         grow: PropTypes.Requireable<number | boolean>;
         basis: PropTypes.Requireable<number>;
         auto: PropTypes.Requireable<boolean>;
+        hcenter: PropTypes.Requireable<boolean>;
+        vcenter: PropTypes.Requireable<boolean>;
         center: PropTypes.Requireable<boolean>;
         as: PropTypes.Requireable<string>;
         children: PropTypes.Requireable<PropTypes.ReactNodeLike>;
