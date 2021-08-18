@@ -1,4 +1,4 @@
-import { createElement, useContext } from 'react'
+import React, { createElement, useContext } from 'react'
 import PropTypes from 'prop-types'
 import {
   getPropsWithLayout,
@@ -9,15 +9,11 @@ import {
 
 const componentPropTypes = {
   as: PropTypes.string,
-  children: PropTypes.node,
   ...propTypes
 }
 
-type BaseComponentProps = PropTypes.InferProps<typeof componentPropTypes>
-
-export interface ComponentProps extends BaseComponentProps {
-  [key: string]: any
-}
+export type ComponentProps = PropTypes.InferProps<typeof componentPropTypes> &
+  React.AllHTMLAttributes<HTMLDivElement>
 
 const Box = ({ as, children, ...rest }: ComponentProps) => {
   const config = useContext(LayoutContext)

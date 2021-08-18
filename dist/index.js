@@ -52,7 +52,7 @@ Object.defineProperty(exports, "getPropsWithLayout", { enumerable: true, get: fu
 Object.defineProperty(exports, "propTypes", { enumerable: true, get: function () { return Layout_1.propTypes; } });
 Object.defineProperty(exports, "LayoutContext", { enumerable: true, get: function () { return Layout_1.LayoutContext; } });
 Object.defineProperty(exports, "Layout", { enumerable: true, get: function () { return Layout_1.default; } });
-var componentPropTypes = __assign({ as: prop_types_1.default.string, children: prop_types_1.default.node }, Layout_1.propTypes);
+var componentPropTypes = __assign({ as: prop_types_1.default.string }, Layout_1.propTypes);
 var Box = function (_a) {
     var as = _a.as, children = _a.children, rest = __rest(_a, ["as", "children"]);
     var config = react_1.useContext(Layout_1.LayoutContext);

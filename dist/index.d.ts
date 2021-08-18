@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from 'react';
 import PropTypes from 'prop-types';
 import { getPropsWithLayout, propTypes, LayoutContext, default as Layout } from './Layout';
 declare const componentPropTypes: {
@@ -36,14 +36,10 @@ declare const componentPropTypes: {
     vcenter: PropTypes.Requireable<boolean>;
     center: PropTypes.Requireable<boolean>;
     as: PropTypes.Requireable<string>;
-    children: PropTypes.Requireable<PropTypes.ReactNodeLike>;
 };
-declare type BaseComponentProps = PropTypes.InferProps<typeof componentPropTypes>;
-export interface ComponentProps extends BaseComponentProps {
-    [key: string]: any;
-}
+export declare type ComponentProps = PropTypes.InferProps<typeof componentPropTypes> & React.AllHTMLAttributes<HTMLDivElement>;
 declare const Box: {
-    ({ as, children, ...rest }: ComponentProps): import("react").DOMElement<never, Element>;
+    ({ as, children, ...rest }: ComponentProps): React.DOMElement<never, Element>;
     displayName: string;
     propTypes: {
         m: PropTypes.Requireable<string | number>;
@@ -80,11 +76,10 @@ declare const Box: {
         vcenter: PropTypes.Requireable<boolean>;
         center: PropTypes.Requireable<boolean>;
         as: PropTypes.Requireable<string>;
-        children: PropTypes.Requireable<PropTypes.ReactNodeLike>;
     };
 };
 declare const Flex: {
-    ({ as, children, ...rest }: ComponentProps): import("react").DOMElement<never, Element>;
+    ({ as, children, ...rest }: ComponentProps): React.DOMElement<never, Element>;
     displayName: string;
     propTypes: {
         m: PropTypes.Requireable<string | number>;
@@ -121,7 +116,6 @@ declare const Flex: {
         vcenter: PropTypes.Requireable<boolean>;
         center: PropTypes.Requireable<boolean>;
         as: PropTypes.Requireable<string>;
-        children: PropTypes.Requireable<PropTypes.ReactNodeLike>;
     };
 };
 export { getPropsWithLayout, propTypes, Layout, LayoutContext, Box, Flex };

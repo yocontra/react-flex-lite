@@ -145,7 +145,9 @@ var rules = [
         match: 'hcenter',
         map: function (n, k, others) {
             return n
-                ? others.column ? decl('align-items', 'center') : decl('justify-content', 'center')
+                ? others.column
+                    ? decl('align-items', 'center')
+                    : decl('justify-content', 'center')
                 : {};
         }
     },
@@ -153,7 +155,9 @@ var rules = [
         match: 'vcenter',
         map: function (n, k, others) {
             return n
-                ? others.column ? decl('justify-content', 'center') : decl('align-items', 'center')
+                ? others.column
+                    ? decl('justify-content', 'center')
+                    : decl('align-items', 'center')
                 : {};
         }
     },
