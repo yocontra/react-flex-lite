@@ -1,6 +1,6 @@
 import { supportedProperty, supportedValue } from 'css-vendor'
 import memo from 'moize'
-import { rule } from './nano'
+import { sheet } from './nano'
 import type { Configuration } from '../types'
 
 type Value = number | string | undefined
@@ -29,7 +29,7 @@ const fixIE = (css: Record<string, any>) => {
     ...css
   }
 }
-const mrule = memo.deep(rule, { maxSize: 1024 })
+const msheet = memo.deep(sheet, { maxSize: 1024 })
 const directions = {
   t: ['top'],
   r: ['right'],
@@ -197,5 +197,5 @@ export default memo.deep((props: Props, config: Configuration) => {
     })
     return prev
   }, {})
-  return Object.keys(css).length ? mrule(fixIE(css)) : undefined
+  return Object.keys(css).length ? msheet({ flex: fixIE(css) }).flex : undefined
 })

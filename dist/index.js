@@ -69,11 +69,4 @@ var Flex = function (_a) {
 exports.Flex = Flex;
 Flex.displayName = 'Flex';
 Flex.propTypes = componentPropTypes;
-var Grid = function (_a) {
-    var as = _a.as, children = _a.children, rest = __rest(_a, ["as", "children"]);
-    var config = react_1.useContext(Layout_1.LayoutContext);
-    return react_1.createElement(as || 'div', Layout_1.getPropsWithLayout(rest, undefined, config), children);
-};
-Grid.displayName = 'Grid';
-Grid.propTypes = componentPropTypes;
 //# sourceMappingURL=index.js.map

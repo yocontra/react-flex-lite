@@ -191,7 +191,7 @@ var getPropsWithLayout = function (props, defaultProps, config) {
         return props;
     var ourClass = getStyle_1.default(styleProps, config || defaultConfig);
     var className = props.className
-        ? classnames_1.default(ourClass, props.className)
+        ? classnames_1.default(props.className, ourClass.trim())
         : ourClass;
     return __assign({ className: className }, passThrough);
 };

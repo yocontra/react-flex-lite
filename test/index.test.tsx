@@ -26,6 +26,7 @@ describe('<Box />', () => {
     const boxEl = queryByText('box text')
     expect(boxEl).toBeInTheDocument()
     expect(boxEl).toHaveClass('box')
+    expect(boxEl).toHaveClass('__5qi056-flex')
     expect(boxEl).toHaveStyle({ marginTop: 8 })
   })
   it('should work with custom context', () => {
@@ -39,6 +40,7 @@ describe('<Box />', () => {
     const boxEl = queryByText('box text')
     expect(boxEl).toBeInTheDocument()
     expect(boxEl).toHaveClass('box')
+    expect(boxEl).toHaveClass('__5reksj-flex')
     expect(boxEl).toHaveStyle({ marginTop: 10 })
   })
 })

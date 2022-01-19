@@ -26,7 +26,7 @@ var fixIE = function (css) {
         return css; // dont need to do anything
     return __assign({ 'min-width': '0%' }, css);
 };
-var mrule = moize_1.default.deep(nano_1.rule, { maxSize: 1024 });
+var msheet = moize_1.default.deep(nano_1.sheet, { maxSize: 1024 });
 var directions = {
     t: ['top'],
     r: ['right'],
@@ -185,6 +185,6 @@ exports.default = moize_1.default.deep(function (props, config) {
         });
         return prev;
     }, {});
-    return Object.keys(css).length ? mrule(fixIE(css)) : undefined;
+    return Object.keys(css).length ? msheet({ flex: fixIE(css) }).flex : undefined;
 });
 //# sourceMappingURL=getStyle.js.map

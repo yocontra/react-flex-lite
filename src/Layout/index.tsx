@@ -164,7 +164,7 @@ export const getPropsWithLayout = <P extends InjectedLayoutProps>(
     return props as Exclude<P, InjectedLayoutProps>
   const ourClass = getStyle(styleProps, config || defaultConfig)
   const className: string = props.className
-    ? cn(ourClass, props.className)
+    ? cn(props.className, ourClass.trim())
     : ourClass
   return { className, ...passThrough } as Exclude<P, InjectedLayoutProps>
 }
