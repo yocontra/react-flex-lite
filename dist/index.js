@@ -12,7 +12,11 @@ var __assign = (this && this.__assign) || function () {
 };
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -44,7 +48,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Flex = exports.Box = exports.LayoutContext = exports.Layout = exports.propTypes = exports.getPropsWithLayout = void 0;
+exports.VBox = exports.HBox = exports.Flex = exports.Box = exports.LayoutContext = exports.Layout = exports.propTypes = exports.getPropsWithLayout = void 0;
 var react_1 = require("react");
 var prop_types_1 = __importDefault(require("prop-types"));
 var Layout_1 = __importStar(require("./Layout"));
@@ -55,18 +59,34 @@ Object.defineProperty(exports, "Layout", { enumerable: true, get: function () { 
 var componentPropTypes = __assign({ as: prop_types_1.default.string }, Layout_1.propTypes);
 var Box = function (_a) {
     var as = _a.as, children = _a.children, rest = __rest(_a, ["as", "children"]);
-    var config = react_1.useContext(Layout_1.LayoutContext);
-    return react_1.createElement(as || 'div', Layout_1.getPropsWithLayout(rest, undefined, config), children);
+    var config = (0, react_1.useContext)(Layout_1.LayoutContext);
+    return (0, react_1.createElement)(as || 'div', (0, Layout_1.getPropsWithLayout)(rest, undefined, config), children);
 };
 exports.Box = Box;
 Box.displayName = 'Box';
 Box.propTypes = componentPropTypes;
 var Flex = function (_a) {
     var as = _a.as, children = _a.children, rest = __rest(_a, ["as", "children"]);
-    var config = react_1.useContext(Layout_1.LayoutContext);
-    return react_1.createElement(as || 'div', Layout_1.getPropsWithLayout(rest, { flex: true }, config), children);
+    var config = (0, react_1.useContext)(Layout_1.LayoutContext);
+    return (0, react_1.createElement)(as || 'div', (0, Layout_1.getPropsWithLayout)(rest, { flex: true }, config), children);
 };
 exports.Flex = Flex;
 Flex.displayName = 'Flex';
 Flex.propTypes = componentPropTypes;
+var HBox = function (_a) {
+    var as = _a.as, children = _a.children, rest = __rest(_a, ["as", "children"]);
+    var config = (0, react_1.useContext)(Layout_1.LayoutContext);
+    return (0, react_1.createElement)(as || 'div', (0, Layout_1.getPropsWithLayout)(rest, { flex: true }, config), children);
+};
+exports.HBox = HBox;
+HBox.displayName = 'HBox';
+HBox.propTypes = componentPropTypes;
+var VBox = function (_a) {
+    var as = _a.as, children = _a.children, rest = __rest(_a, ["as", "children"]);
+    var config = (0, react_1.useContext)(Layout_1.LayoutContext);
+    return (0, react_1.createElement)(as || 'div', (0, Layout_1.getPropsWithLayout)(rest, { flex: true, column: true }, config), children);
+};
+exports.VBox = VBox;
+VBox.displayName = 'VBox';
+VBox.propTypes = componentPropTypes;
 //# sourceMappingURL=index.js.map

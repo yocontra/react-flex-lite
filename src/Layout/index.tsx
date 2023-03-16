@@ -2,7 +2,7 @@ import React, { forwardRef, createContext, useContext } from 'react'
 import PropTypes from 'prop-types'
 import pick from 'lodash.pick'
 import omit from 'lodash.omit'
-import cn from 'classnames'
+import cn from 'clsx'
 import hoist from 'hoist-non-react-statics'
 import * as defaultConfig from './config'
 import getStyle from './getStyle'
@@ -190,7 +190,7 @@ const Layout = <P extends InjectedLayoutProps>(
         ...InputComponent.propTypes,
         ...propTypes
       }
-    : (propTypes as any) // TODO: FIXME!
+    : (propTypes as any)
   return out
 }
 export default Layout

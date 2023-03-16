@@ -1,3 +1,3 @@
-export declare type Configuration = {
+export type Configuration = {
     space: number[];
 };

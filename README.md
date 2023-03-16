@@ -26,7 +26,7 @@ This module aims to provide a very lightweight set of components on top of flexb
 
 ## Example Usage
 
-### Components
+### Primary Components
 
 ```jsx
 import { Box, Flex } from 'react-flex-lite'
@@ -47,6 +47,29 @@ const Example = () => (
 )
 ```
 
+### Shorthand Components
+
+For code clarity, VBox is a shorthand alias around `<Flex column>` and HBox is an alias for `<Flex />`
+
+```jsx
+import { HBox, VBox } from 'react-flex-lite'
+
+const Example = () => (
+  <VBox auto>
+    <Flex shrink={0}>
+      <Box>1</Box>
+      <Box>2</Box>
+      <Box>3</Box>
+    </HBox>
+    <HBox shrink={0}>
+      <Box>1</Box>
+      <Box>2</Box>
+      <Box>3</Box>
+    </HBox>
+  </VBox>
+)
+```
+
 ### HOC
 
 ```jsx
@@ -55,6 +78,42 @@ import { Layout } from 'react-flex-lite'
 @Layout()
 const Example = () => <div>Test</div>
 ```
+
+## Properties
+
+- m - Controls `margin` - number (for grid index, or pixels) or string (ie "100%")
+- mb - Controls `margin-bottom` - number (for grid index, or pixels) or string (ie "100%")
+- mt - Controls `margin-top` - number (for grid index, or pixels) or string (ie "100%")
+- mr - Controls `margin-right` - number (for grid index, or pixels) or string (ie "100%")
+- ml - Controls `margin-left` - number (for grid index, or pixels) or string (ie "100%")
+- mx - Controls `margin-right` and `margin-left` - number (for grid index, or pixels) or string (ie "100%")
+- my - Controls `margin-top` and `margin-bottom` - number (for grid index, or pixels) or string (ie "100%")
+- p - Controls `padding` - number (for grid index, or pixels) or string (ie "100%")
+- pb - Controls `padding-bottom` - number (for grid index, or pixels) or string (ie "100%")
+- pt - Controls `padding-top` - number (for grid index, or pixels) or string (ie "100%")
+- pr - Controls `padding-righht` - number (for grid index, or pixels) or string (ie "100%")
+- pl - Controls `padding-left` - number (for grid index, or pixels) or string (ie "100%")
+- px - Controls `padding-right` and `padding-left` - number (for grid index, or pixels) or string (ie "100%")
+- py - Controls `padding-top` and `padding-bottom` - number (for grid index, or pixels) or string (ie "100%")
+- h - Controls `height` - number (for pixels) or string (ie "100%")
+- w - Controls `width` - number (for pixels) or string (ie "100%")
+- flex - Sets `display: flex` - boolean
+- inline - Sets `inline-flex` - boolean
+- wrap - Sets `flex-wrap` - boolean
+- reverse - Sets `row-reverse` - boolean
+- column - Sets `flex-direction: column` - boolean
+- align - Sets `align-items` - One of 'normal', 'flex-start', 'flex-end', 'center', 'start', 'end', 'self-start', 'self-end', 'baseline', 'stretch', 'initial', 'inherit'
+- alignContent - Sets `align-content` - 'start', 'end', 'flex-start', 'flex-end', 'center', 'normal', 'baseline', 'space-between', 'space-around', 'space-evenly', 'stretch', 'initial', 'inherit'
+- alignSelf - Sets `align-self` - One of 'auto', 'normal', 'self-start', 'self-end', 'flex-start', 'flex-end', 'center', 'stretch', 'baseline', 'initial', 'inherit'
+- justify - Sets `justify-content` - One of 'start', 'end', 'flex-start', 'flex-end', 'center', 'left', 'right', 'normal', 'space-between', 'space-around', 'space-evenly', 'baseline', 'initial', 'inherit'
+- order - Sets `order` - number
+- shrink - Sets `flex-shrink` - number, or boolean for 0 or 1
+- grow - Sets `flex-grow` - number, or boolean for 0 or 1
+- basis - Sets `flex-basis` - number
+- auto - Sets `flex: 1 1 auto` when true
+- hcenter - Sets properties needed to horizontally center contents
+- vcenter - Sets properties needed to vertically center contents
+- center - Sets properties needed to horizontally and vertically center contents
 
 ## Providing your own grid
 
@@ -76,7 +135,7 @@ const config = {
 }
 
 // in the root of your app
-;<LayoutContext.Provider value={config}>
+<LayoutContext.Provider value={config}>
   <YourApplication />
 </LayoutContext.Provider>
 ```

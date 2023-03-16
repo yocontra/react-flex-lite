@@ -12,7 +12,11 @@ var __assign = (this && this.__assign) || function () {
 };
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -29,10 +33,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __spreadArray = (this && this.__spreadArray) || function (to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-        to[j] = from[i];
-    return to;
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
 };
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -44,7 +52,7 @@ var react_1 = require("react");
 var prop_types_1 = __importDefault(require("prop-types"));
 var lodash_pick_1 = __importDefault(require("lodash.pick"));
 var lodash_omit_1 = __importDefault(require("lodash.omit"));
-var classnames_1 = __importDefault(require("classnames"));
+var clsx_1 = __importDefault(require("clsx"));
 var hoist_non_react_statics_1 = __importDefault(require("hoist-non-react-statics"));
 var defaultConfig = __importStar(require("./config"));
 var getStyle_1 = __importDefault(require("./getStyle"));
@@ -175,7 +183,7 @@ var ourProps = [
     'order',
     'inline'
 ];
-var ourPropsWithExtra = __spreadArray(__spreadArray([], ourProps), ['className']);
+var ourPropsWithExtra = __spreadArray(__spreadArray([], ourProps, true), ['className'], false);
 /**
  * Function used to generate a className for the component as well
  * as strip out any non-style props
@@ -185,29 +193,29 @@ var ourPropsWithExtra = __spreadArray(__spreadArray([], ourProps), ['className']
  */
 var getPropsWithLayout = function (props, defaultProps, config) {
     var fullProps = defaultProps ? __assign(__assign({}, defaultProps), props) : props;
-    var passThrough = lodash_omit_1.default(props, ourPropsWithExtra);
-    var styleProps = lodash_pick_1.default(fullProps, ourProps);
+    var passThrough = (0, lodash_omit_1.default)(props, ourPropsWithExtra);
+    var styleProps = (0, lodash_pick_1.default)(fullProps, ourProps);
     if (Object.keys(styleProps).length === 0)
         return props;
-    var ourClass = getStyle_1.default(styleProps, config || defaultConfig);
+    var ourClass = (0, getStyle_1.default)(styleProps, config || defaultConfig);
     var className = props.className
-        ? classnames_1.default(props.className, ourClass.trim())
+        ? (0, clsx_1.default)(props.className, ourClass.trim())
         : ourClass;
     return __assign({ className: className }, passThrough);
 };
 exports.getPropsWithLayout = getPropsWithLayout;
-exports.LayoutContext = react_1.createContext(defaultConfig);
+exports.LayoutContext = (0, react_1.createContext)(defaultConfig);
 var Layout = function (InputComponent, defaultProps) {
-    var out = react_1.forwardRef(function (props, ref) {
-        var config = react_1.useContext(exports.LayoutContext);
-        var nprops = exports.getPropsWithLayout(props, defaultProps, config);
-        return jsx_runtime_1.jsx(InputComponent, __assign({ ref: ref }, nprops), void 0);
+    var out = (0, react_1.forwardRef)(function (props, ref) {
+        var config = (0, react_1.useContext)(exports.LayoutContext);
+        var nprops = (0, exports.getPropsWithLayout)(props, defaultProps, config);
+        return (0, jsx_runtime_1.jsx)(InputComponent, __assign({ ref: ref }, nprops));
     });
-    hoist_non_react_statics_1.default(out, InputComponent);
+    (0, hoist_non_react_statics_1.default)(out, InputComponent);
     var name = InputComponent.displayName || InputComponent.name;
-    out.displayName = name ? "Layout(" + name + ")" : 'Layout';
+    out.displayName = name ? "Layout(".concat(name, ")") : 'Layout';
     out.propTypes = InputComponent.propTypes
-        ? __assign(__assign({}, InputComponent.propTypes), exports.propTypes) : exports.propTypes; // TODO: FIXME!
+        ? __assign(__assign({}, InputComponent.propTypes), exports.propTypes) : exports.propTypes;
     return out;
 };
 exports.default = Layout;

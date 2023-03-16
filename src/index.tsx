@@ -37,4 +37,35 @@ const Flex = ({ as, children, ...rest }: ComponentProps) => {
 Flex.displayName = 'Flex'
 Flex.propTypes = componentPropTypes
 
-export { getPropsWithLayout, propTypes, Layout, LayoutContext, Box, Flex }
+const HBox = ({ as, children, ...rest }: ComponentProps) => {
+  const config = useContext(LayoutContext)
+  return createElement(
+    as || 'div',
+    getPropsWithLayout(rest, { flex: true }, config),
+    children
+  )
+}
+HBox.displayName = 'HBox'
+HBox.propTypes = componentPropTypes
+
+const VBox = ({ as, children, ...rest }: ComponentProps) => {
+  const config = useContext(LayoutContext)
+  return createElement(
+    as || 'div',
+    getPropsWithLayout(rest, { flex: true, column: true }, config),
+    children
+  )
+}
+VBox.displayName = 'VBox'
+VBox.propTypes = componentPropTypes
+
+export {
+  getPropsWithLayout,
+  propTypes,
+  Layout,
+  LayoutContext,
+  Box,
+  Flex,
+  HBox,
+  VBox
+}

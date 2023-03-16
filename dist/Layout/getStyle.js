@@ -40,8 +40,8 @@ var spacingTypes = {
     p: 'padding'
 };
 var num = function (n) { return typeof n === 'number' && !isNaN(n); };
-var px = function (n) { return (num(n) ? n + "px" : n); };
-var heightWidth = function (n) { return (!num(n) || n > 1 ? px(n) : n * 100 + "%"); };
+var px = function (n) { return (num(n) ? "".concat(n, "px") : n); };
+var heightWidth = function (n) { return (!num(n) || n > 1 ? px(n) : "".concat(n * 100, "%")); };
 var scaleValue = function (n, config) {
     var neg = n < 0 ? -1 : 1;
     return !num(n) ? n : (config.space[Math.abs(n)] || Math.abs(n)) * neg;
@@ -50,8 +50,8 @@ var decl = function (k, v) {
     var _a;
     if (!k || v == null)
         return {};
-    var nk = css_vendor_1.supportedProperty(k);
-    var nv = css_vendor_1.supportedValue(k, v);
+    var nk = (0, css_vendor_1.supportedProperty)(k);
+    var nv = (0, css_vendor_1.supportedValue)(k, v);
     if (!nk || nv == null)
         return {}; // totally unsupported
     return _a = {}, _a[nk] = nv, _a;
@@ -59,13 +59,13 @@ var decl = function (k, v) {
 var rules = [
     // spacing shorthands
     {
-        match: new RegExp("^[" + Object.keys(spacingTypes).join('') + "][" + Object.keys(directions).join('') + "]?$"),
+        match: new RegExp("^[".concat(Object.keys(spacingTypes).join(''), "][").concat(Object.keys(directions).join(''), "]?$")),
         map: function (n, key, props, config) {
             var _a = key.split(''), type = _a[0], dir = _a[1];
             var prop = spacingTypes[type];
             var dirs = directions[dir] || [''];
             var val = scaleValue(n, config);
-            return dirs.reduce(function (prev, d) { return (__assign(__assign({}, prev), decl(d ? prop + "-" + d : prop, px(val)))); }, {});
+            return dirs.reduce(function (prev, d) { return (__assign(__assign({}, prev), decl(d ? "".concat(prop, "-").concat(d) : prop, px(val)))); }, {});
         }
     },
     // height and width shorthands

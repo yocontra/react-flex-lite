@@ -1,6 +1,6 @@
 import type { Configuration } from '../types';
-declare type Value = number | string | undefined;
-declare type Props = Record<string, Value>;
+type Value = number | string | undefined;
+type Props = Record<string, Value>;
 declare const _default: import("moize").Moized<(props: Props, config: Configuration) => string, Partial<{
     isDeepEqual: boolean;
     isPromise: boolean;
@@ -12,9 +12,9 @@ declare const _default: import("moize").Moized<(props: Props, config: Configurat
     maxAge: number;
     maxArgs: number;
     maxSize: number;
-    onCacheAdd: import("moize").OnCacheOperation;
-    onCacheChange: import("moize").OnCacheOperation;
-    onCacheHit: import("moize").OnCacheOperation;
+    onCacheAdd: import("moize").OnCacheOperation<(props: Props, config: Configuration) => string>;
+    onCacheChange: import("moize").OnCacheOperation<(props: Props, config: Configuration) => string>;
+    onCacheHit: import("moize").OnCacheOperation<(props: Props, config: Configuration) => string>;
     onExpire: import("moize").OnExpire;
     profileName: string;
     serializer: import("moize").Serialize;
