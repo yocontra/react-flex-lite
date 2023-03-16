@@ -1,6 +1,6 @@
 {
   "name": "react-flex-lite",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "Flexbox components for React, as minimal as possible",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -45,7 +45,8 @@
   },
   "overrides": {
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "typescript": "^5.0.0"
   },
   "peerDependencies": {
     "react": ">=17.0.0"
@@ -71,6 +72,6 @@
     "rimraf": "^4.0.0",
     "ts-jest": "^29.0.0",
     "typedoc": "^0.23.27",
-    "typescript": "^4.9.5"
+    "typescript": "^5.0.0"
   }
 }
