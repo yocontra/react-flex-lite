@@ -20,7 +20,7 @@ var nano_1 = require("./nano");
 // detect IE 6 - 11
 var isOldIE = typeof navigator !== 'undefined' &&
     (navigator.userAgent.indexOf('MSIE') !== -1 ||
-        navigator.appVersion.indexOf('Trident/') !== -1);
+        navigator.userAgent.indexOf('Trident') !== -1);
 var fixIE = function (css) {
     if (!isOldIE || css.display !== 'flex')
         return css; // dont need to do anything

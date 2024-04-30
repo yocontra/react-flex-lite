@@ -1,11 +1,11 @@
 {
   "name": "react-flex-lite",
-  "version": "7.0.1",
+  "version": "7.1.0",
   "description": "Flexbox components for React, as minimal as possible",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "docs": "typedoc src/index.tsx --theme minimal && gh-pages -d docs",
+    "docs": "typedoc src/index.tsx && gh-pages -d docs",
     "lint": "prettier --write .",
     "build": "npm run clean && tsc -b",
     "clean": "rimraf dist",
@@ -26,15 +26,15 @@
     "grid"
   ],
   "contributors": [
-    "Contra <yo@contra.io> (http://contra.io)"
+    "Contra <yo@contra.io> (https://contra.io)"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/staeco/react-flex-lite.git"
+    "url": "git+https://github.com/yocontra/react-flex-lite.git"
   },
   "license": "MIT",
   "dependencies": {
-    "clsx": "^1.2.1",
+    "clsx": "^2.0.0",
     "css-vendor": "^2.0.5",
     "hoist-non-react-statics": "^3.2.1",
     "lodash.omit": "^4.5.0",
